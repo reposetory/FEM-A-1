@@ -1,2 +1,3 @@
 # engnfinal
-class project 
+class project
+team members: Zhi Li Helena Liu YunXing Su
