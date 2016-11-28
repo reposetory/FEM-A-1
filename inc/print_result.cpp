@@ -1,5 +1,5 @@
 #include <iostream>
-#include <fstream> 
+#include <fstream>
 #include <string>
 #include <vector>
 #include <cmath>
@@ -8,13 +8,13 @@
 using Eigen::MatrixXd;
 using namespace std;
 
-void print_output(string filename,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end){
+void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end){
 /*
-save the result to a file                          
+save the result to a file
 */
 ofstream writefile;
 string fullname;
-fullname=filename+".dat";
+fullname=filename+"_"+solvername+".dat";
 writefile.open (fullname.c_str() , ios::out);
 writefile<<"This is the output for 1D heat equation"<<endl;
 
@@ -25,12 +25,12 @@ writefile<<"grid points "<<'\n';
 
 for(int i=0;i<n_step;i++){
     writefile<<grids[i]<<" ";
-    
+
 }
 writefile<<'\n';
 writefile<<"Time 0"<<'\n';
 for(int i=0;i<n_step;i++){
-    writefile<<u_ini[i]<<" ";    
+    writefile<<u_ini[i]<<" ";
 }
 writefile<<'\n';
 
@@ -38,7 +38,7 @@ writefile<<'\n';
 for(int i=0;i<n_time;i++){
     writefile<<"Time "<<double(i+1)*k_time<<'\n';
     for(int j=0;j<n_step;j++){
-    writefile<<u(i,j)<<" ";    
+    writefile<<u(i,j)<<" ";
     }
     writefile<<'\n';
 }
