@@ -1,2 +1,0 @@
-/usr/bin/ar qc libFEM.a  CMakeFiles/FEM.dir/inc/algorithm.cpp.o CMakeFiles/FEM.dir/inc/print_result.cpp.o CMakeFiles/FEM.dir/inc/read_input.cpp.o
-/usr/bin/ranlib libFEM.a

@@ -1,4 +1,0 @@
-/users/hliu4/class/FEM-A.git/FEM-A/CMakeFiles/FEM.dir
-/users/hliu4/class/FEM-A.git/FEM-A/CMakeFiles/edit_cache.dir
-/users/hliu4/class/FEM-A.git/FEM-A/CMakeFiles/main.dir
-/users/hliu4/class/FEM-A.git/FEM-A/CMakeFiles/rebuild_cache.dir
