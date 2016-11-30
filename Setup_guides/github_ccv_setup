@@ -1,0 +1,42 @@
+Setting up Github on CCV
+
+
+
+***************************************************************************
+HOW TO GENERATE KEYS
+***************************************************************************
+Purpose: to not be required to enter email/password 
+
+module load git
+git config --global user.name "YOURUSERNAME"
+git config --global user.email "YOUREMAIL"
+ssh-keygen -t rsa -b 4096 -C "YOUREMAIL"
+    save key to this path:
+        ~/users/.ssh/id_rsagithub
+    no need to enter password, can just hit enter twice 
+can skip next line (this checks if an agent exists, should output a PID):
+eval "$(ssh-agent -s)"   
+
+ssh-add ~/.ssh/id_rsagithub
+
+copy contents of public key which is in ~/.ssh/id_rsagithub.pub
+vi ~/.ssh/id_rsagithub.pub
+
+Paste this key into your github's list of stored keys
+https://github.com/settings/keys
+Add new SSH key in "New SSH key"
+
+
+***************************************************************************
+
+***************************************************************************
+
+
+
+
+
+***************************************************************************
+
+***************************************************************************
+
+
