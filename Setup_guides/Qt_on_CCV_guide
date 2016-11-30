@@ -1,0 +1,25 @@
+
+
+How to use Qt on CCV
+**********************************************
+
+reference: https://wiki.qt.io/Getting_Started_on_the_Commandline
+
+TO START:
+easy way: install vnc (https://web1.ccv.brown.edu/technologies/vnc)
+open vnc window
+
+module load qt/5.7.0
+
+-got to directory with files 
+cd ~/PATHNAME
+
+qmake -project
+qmake
+make
+./NAMEOFEXECUTABLE
+
+
+
+other ccv gui guides, info on x-forwarding, gui mode, matlab (not useful so far) 
+https://www.ccv.brown.edu/doc/software
