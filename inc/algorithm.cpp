@@ -8,6 +8,7 @@
 using namespace Eigen;
 using namespace std;
 
+//boundary class
 // generate a simple initiial boundary condition u(,0)=sin(x)+sin(10x)
 void initial_boundary(vector<double>& u_ini,vector<double>& grid){
 
@@ -18,6 +19,15 @@ void initial_boundary(vector<double>& u_ini,vector<double>& grid){
     }
 
 
+}
+
+//a sample boundary condtion with a disturbulation u(,0)=sin(x)+sin(10x)+delta
+void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta=0.0){
+  int ngrids=grid.size();
+  for (int i=0;i<ngrids;i++){
+      u_ini[i]=sin(grid[i])+sin(110*grid[i])+delta;
+
+  }
 }
 
 //backward euler ALGORITHM

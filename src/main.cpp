@@ -102,12 +102,10 @@ int main(int argc, char* argv[]) {
       solver_DuFort_Frankel_1D(u,u_ini,grid,k,h,T);
   }
   else{
-    cout << "Not solver for the input" << endl;
+    cout << "No solver for the input" << endl;
   }
- //solver_back_euler_1D(u,u_ini,grid,k,h,T) ;
- //solver_euler_1D(u,u_ini,grid,k,h,T) ;
- //solver_crank_nicolson_1D(u,u_ini,grid,k,h,T);
- //solver_DuFort_Frankel_1D(u,u_ini,grid,k,h,T);
+
+// convergence stability and accuracy
 /*
  save the solution to a data file
  */
