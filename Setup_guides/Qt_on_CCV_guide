@@ -11,15 +11,15 @@ open vnc window
 
 module load qt/5.7.0
 
--got to directory with files 
+-got to directory with files
 cd ~/PATHNAME
 
 qmake -project
 qmake
 make
-./NAMEOFEXECUTABLE
+./NAMEOFTHEDIRECTORY
 
 
 
-other ccv gui guides, info on x-forwarding, gui mode, matlab (not useful so far) 
+other ccv gui guides, info on x-forwarding, gui mode, matlab (not useful so far)
 https://www.ccv.brown.edu/doc/software
