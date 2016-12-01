@@ -1,0 +1,127 @@
+
+//////////////// formatting functions 
+
+
+//read in input file
+void read_input(string filename,vector<double>&  grids,double& h_space,double& k_time,double& T_end);
+
+//print out output file
+void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end);
+
+// reformat output  file to be usable in plotting for 1D 
+void reformat_output1D(string inputfilename, string outputfilename);
+
+// reformat output  file to be usable in plotting for 2D
+void reformat_output2D(string inputfilename, string outputfilename);
+
+// plot output with plotting software (input is the formatted output from "reformat_output")
+// script needs to make video
+void plotting(string inputfilename, string scriptname);
+
+
+
+//////////////// 1D solver algorithms (MatrixXd is time and x matrix, T is total time)
+
+// 1D set initial conditions 
+void initial_boundary(vector<double>& u_ini,vector<double>& grid);
+
+// 1D set boundary conditions (first one, may add more)
+void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta=0.0);
+
+// 1D backward euler solver 
+void solver_back_euler_1D(MatrixXd& u,vector<double>& u_ini,vector<double>& grid,double& k,double& h,double& T); 
+
+// 1D euler solver
+void solver_euler_1D(MatrixXd& u,vector<double>& u_ini,vector<double>& grid,double& k,double& h,double& T); 
+
+// 1D crank nicholson solver
+void solver_crank_nicolson_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T);
+
+// 1D dufort frankel solver
+void solver_DuFort_Frankel_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T);
+
+
+
+////////////////// 2D solver algorithms
+/// x and y positions 
+
+// 2D set initial conditions 
+void initial_boundary(MatrixXd & u_ini, MatrixXd & grid);
+
+// 2D set boundary conditions (first one)
+void boundary_2d_1(MatrixXd & u_ini, MatrixXd & grid, double delta=0.0);
+
+// 2D backward euler solver (T total time)
+void solver_back_euler_1D(MatrixXd & u_ini, MatrixXd & grid, double& k, double& h, double& T); 
+
+// 2D euler solver
+void solver_euler_1D(MatrixXd & u_ini, MatrixXd & grid, double& k, double& h, double& T); 
+
+// 2D crank nicholson solver
+void solver_crank_nicolson_1D(MatrixXd & u_ini, MatrixXd & grid, double& k, double& h, double& T); 
+
+// 2D dufort frankel solver
+void solver_DuFort_Frankel_1D(MatrixXd & u_ini, MatrixXd & grid, double& k, double& h, double& T); 
+
+
+
+
+
+
+
+
+
+
+////////////////// doing concurrency/multithreading
+
+// delegating tasks to different threads (2d), for explicit algorithms
+void delegate_threads(int threads, int rows, int cols);
+    //int tasks_per_thread = threads/rows;
+    //give each thread the right indices to solve seperately
+   
+
+
+
+
+
+
+/////////////////// convergence functions
+
+// calculate differences between two timesteps
+void differences(string outputfilename, MatrixXd & u, MatrixXd & u_ini, Matrix & grid);
+        //output u - u_ini per point per time step for plotting to turn into a video to show if plot flattens over time
+        //print out yes/no
+
+
+// 1D (2D periodic boundary conditions) convergence stability and accuracy for the 1d four basic algorithms
+void convergence_1d(string solvername,string boundaryname,double delta=10e-7,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T);
+
+// study the convergence stability and accuracy for 1d fem (mesh and all)
+void convergence_1d_fem();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
