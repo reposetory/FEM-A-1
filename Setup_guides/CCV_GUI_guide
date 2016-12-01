@@ -1,0 +1,31 @@
+To use a GUI on CCV, there are several ways
+1) VNC
+2) X11 forwarding
+
+
+
+
+*********************************************************************
+x11 forwarding
+*********************************************************************
+As we saw in tonight's class, there are two different ways to work with graphical tools on Oscar, the CCV's computing cluster.
+
+    Log into Oscar by using any VNC (virtual network client) client on your machine, or
+    Log into Oscar using a secure shell (SSH) terminal with X11 forwarding.  X11 is the graphics windowing environment for unix/linux.
+
+The second method is generally more reliable and faster since it has lower overhead.  At least a few people had some issues logging into Oscar and getting X11 forwarding to work.
+
+On Windows:
+
+    You can use Putty, which is a lightweight terminal client.  X11 forwarding is possible, but I have not used it recently.
+    If you already have Cygwin installed then you don't need to install Putty.  Instead, you will need to install a few packages from the Cygwin setup.exe file.  You will need 'openssh' for the terminal, then you will need 'xinit' and 'xorg-server' for the X11 forwarding.  Running 'startxwin' from the cmd line will enable window environments to be forwarded from CCV to your X11 client.
+
+On a Mac:
+
+    Install XQuartz (https://www.xquartz.org/) to add X11 windowing support.  Then you should have the graphics working from your terminal window.
+
+To test out X11 forwarding from the CCV, you can launch 'xclock' from the login node.  (Note that 'xclock' will not work on the interactive computing nodes).  Alternatively, you should be able to run an interactive 'gnuplot' session and type 'plot sin(x)/x' to launch a new window with the sinc function.
+
+If you need further assistance with login issues, you can contact support@ccv.brown.edu.  Otherwise, Ammar and I will help as needed.
+
+Prof. G
