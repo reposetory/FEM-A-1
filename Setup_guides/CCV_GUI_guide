@@ -2,6 +2,21 @@ To use a GUI on CCV, there are several ways
 1) VNC
 2) X11 forwarding
 
+other ccv gui guides, info on x-forwarding, gui mode, matlab (not useful so far)
+https://www.ccv.brown.edu/doc/software
+
+
+
+
+*********************************************************************
+VNC
+*********************************************************************
+
+install vnc (https://web1.ccv.brown.edu/technologies/vnc)
+open vnc window
+do stuff. can also access command line inside vnc window
+
+
 
 
 
