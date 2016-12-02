@@ -22,7 +22,7 @@ void differences_1d(string outputfilename, string solvername,MatrixXd & u, Matri
 
 
 // study the  stability for the four basic algorithm
-void convergence_1d(string solvername,string boundaryname,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T,double delta=10e-7){
+void convergence_1d(string outputfilename,string solvername,string boundaryname,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T,double delta=10e-7){
 
   int ntime;
   int ngrids;
@@ -90,15 +90,16 @@ void convergence_1d(string solvername,string boundaryname,vector<double> &u_ini,
   // save the data for different cases
 
   // print the result for the original solution
-  print_output(filename, solvername, grids,u_real, u_delta_plus, h, k, T);
+
+  print_output(outputfilename, solvername, grid,u_ini,u_real, h, k, T);
 
   //print the result with ini+delta
   string caselabel;
   caselabel=solvername+"_plus";
-  print_output( filename, caselabel,grids,u_ini_plus, u_delta_plus, h, k, T);
+  print_output( outputfilename, caselabel,grid,u_ini_plus, u_delta_plus, h, k, T);
 
   //print the result with ini-delta
   caselabel=solvername+"_minus";
-  print_output( filename,caselabel,grids, u_ini_minus, u_delta_minus, h,k,T);
+  print_output( outputfilename,caselabel,grid, u_ini_minus, u_delta_minus, h,k,T);
 
 }

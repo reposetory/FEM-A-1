@@ -3,6 +3,7 @@
 #include <algorithm.h> //This is the library that contains the implementation of different numerical algorithm
 #include <vector>
 #include <Eigen/Dense>
+#include <convergence.h>
 
 using Eigen::MatrixXd;
 using namespace std;
@@ -110,11 +111,11 @@ int main(int argc, char* argv[]) {
  */
     print_output(filename,solvername,grid,u_ini,u,h,k,T);
 
-    
+
     // convergence stability and accuracy
       string boundaryname;
-      boundaryname="1d_1"
-      convergence_1d( solvername, boundaryname,u_ini,grid, k,h, T);
+      boundaryname="1d_1";
+      convergence_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
 
     return 0;
 
