@@ -1,0 +1,480 @@
+https://www.ccv.brown.edu/technologies/software
+
+abaqus:Abaqus - Finite Element Analysis
+abyss:ABySS - A De Novo, Parallel, Paired-end Sequence Assembler
+acml:ACML - AMD Core math Library
+adndp:AdNDP - Adaptive Natural Density Partitioning
+afni:AFNI - Analysis of Functional Neuro Images
+agalma:Agalma - Automated Transcriptome Assembly Pipeline
+ale:ALE - Assembly Likelihood Estimator
+ambertools:AmberTools - Assisted Model Building with Energy Refinement, molecular dynamics package
+amdis:AmDiS - Adapative MultiDimensional Simulations
+amos:AMOS - A Modular, Open-Source whole genome assembler
+amphora2: MPHORA is an automated phylogenomic inference application for large-scale protein phylogenetic analysis.
+annovar:ANNOVAR - functional annotation of genetic variants
+ansys:ANSYS - Electroncs simulation Software including HFSS (Licensed by Engineering)
+ants:ANTS - Advanced Normalization Tools
+arb:ARB - Sequence Database Handling and Data Anaylsis
+ase:ase - Atomic Simulation Environment
+aspera:Aspera Connect - High Performance Transfer Client
+atlas:ATLAS (Automatically Tuned Linear Algebra Software)`
+atomeye:AtomEye - atomistic configuration viewer
+augustus:augustus - gene prediction for eukaryotes
+avida:Avida - Digital Evolution platform
+b2g4pipe:B2G4PIPE - A version for B2G annotation without FrontEnd (GUI) for Pipeline Integration
+bamtools:BamTools - Toolkit for BAM Alignment Files
+bbmap:BBMap - A short read aligner
+bcftools:BCFtools - utilities for variant calling and manipulating VCFs and BCFs (part of samtools)
+beagle:Beagle - evaluate the likelihood of sequence evolution on trees
+beast:BEAST - Bayesian MCMC Analysis of Molecular Sequences
+bedops:bedops - Tools for genomics data
+bedtools:BEDTools - Flexible suite of utilities for comparing genomic features
+bellmansgapc:Bellman’s GAP Compiler - an ADP compiler which translates GAP-L programs into efficient C++ code
+bib:bib - Bioinformatics Brew
+bigdft:DFT - massively parallel electronic structure code
+biol1425:Scripts for course BIOL1425
+biolite:BioLite - bioinformatics workflows with provenance and diagnostics
+biomed:biomed - some handy customized scripts for bioinformatics
+bits:BITS - binary interval search with CUDA
+blas:blas - Basic Linear Algebra Subprograms
+blasr:BLASR - long read aligner
+blast:BLAST - Basic Local Alignment Search Tool
+blat:Blat is an alignment tool like BLAST
+blender:Blender 3D render package
+boost:Boost - The Boost C++ Libraries
+bowtie:Bowtie - An ultrafast memory-efficient short read aligner
+bowtie2:Bowtie2 - Fast and sensitive read alignment
+breakdancer:breakdancer - SV detection from paired end reads mapping
+bsmap:BSMAP is a short reads mapping software for bisulfite sequencing reads.
+busco:BUSCO - Completeness Assessment for genome assemblies
+bwa:BWA - Burrows-Wheeler Aligner
+bxh_xcede_tools:BXH-XCEDE tools
+c3d:C3d - Convert3d Medical Image Processing Tool
+cadence:Cadence - EDA Software and Verification Tools
+calculix:Calculix - 3D Structural Finit Element Program
+calypso:Calypso - Crystal Structure Analysis by Particle Swarm Optimization
+cantera:Cantera: A suite of object-oriented software tools for problems involving chemical kinetics, thermodynamics, and/or transport processes.
+casava:CASAVA - Genome Analyzer Software
+cave:CAVE - everything you need for spelunking
+cbsbio:Locating proteins in the cell using TargetP, SignalP, and related tools
+cctools:Cooperative Computing Tools (cctools) - a collection of programs designed to assist users with the difficulties of building and
+managing complex, fault-prone distributed systems
+cd-hit:CD-HIT - clustering and comparing protein or nucleotide sequences
+cegma:CEGMA - a pipeline for building a set of high reliable set of gene annotations in virtually any eukaryotic genome
+celera:Celera - Whole-Genome Shotgun Assembler
+centos-libs:CentOS Libraries
+centos-updates:Updated versions of programs include in CentOS
+cgal:CGAL - Computing Genome Assembly Likelihoods
+cgalorg:CGAL Computational Geometry Algorithms Library
+chlororef:chlororef - Reference-Based Assembly Pipeline for Chloroplasts
+circos:Circos - visualizes data in a circular layout
+citcomcu:citcomCU - Finite element parallel code capable of modeling thermochemical convection in a three dimensional domain appropriate for convection within the Earth's mantle.
+citcoms:citcomS - Finite element code designed to solve compressible thermochemical convection problems relevant to Earth's mantle.
+clang:clang: a C language family frontend for LLVM
+clang:libc++ included
+clang:libc++ not included
+clustal:Clustal - General Purpose Multiple Sequence Alignment Program for DNA or Proteins
+clustalo:Clustal Omega is the latest addition to the Clustal family. It offers a significant increase in scalability over previous versions, allowing hundreds of thousands of sequences to be aligned in only a few hours.
+cmake:CMake - Cross Platform Make
+cnvnator:CNVnator - a tool for CNV discovery and genotyping from depth of read mapping
+code-aster:code_aster - finite element library
+comsol:COMSOL - Finite Element analysis sover (licensed by Engineering)
+conifer: CoNIFER uses exome sequencing data to find copy number variants (CNVs) and genotype the copy-number of duplicated genes.
+consensus:Find DNA and protein patterns
+coreutils:coreutils - the basic file, shell and text manipulation utilities of the GNU operating system
+cosi:cosi - coalescent simulations
+cppunit:cppunit - c++ port of JUnit framework
+crossrate:crossrate - Chemical Kinetics and Dynamics Tools
+cuda:CUDA - NVIDIA GPU Programming Toolkit
+cudnn:cuDNN - NVIDIA CUDA Deep Neural Network library
+cufflinks:Cufflinks - RNA Seq analysis tools
+cutadapt:cutadapt - trim adapters from high-throughput sequencing reads
+cytoscape: Cytoscape is an open source software platform for visualizing molecular interaction networks and biological pathways and integrating these networks with annotations, gene expression profiles and other state data.
+dacapo-mva:Dacapo 2.7.16 using gfortran and mvapich2
+datamash:datamash - a command-line program which performs basic numeric,textual and statistical operations on input textual data files
+davinci:davinci - A tool to manipulate and view various types of data
+dealii:deal.II - Finite Element Differential Equations Analysis Library
+deconseq:deconseq - DECONtamination of SEQuence data using a modified version of BWA-SW
+desmond:Desmond - molecular Dynamics System software
+dftb+:DFTB+ - quantum mechanics simulation package
+diamond:diamond - a BLAST-compatible local aligner for mapping protein and translated DNA query sequences
+dicom-browser:DicomBrowser - an application for inspecting and modifying DICOM metadata in many files at once
+dsrc:DSRC2 - Industry-oriented compression of FASTQ files
+dwgsim:Whole genome simulation can be performed with dwgsim. dwgsim is based off of wgsim found in SAMtools written by Heng Li. It was modified to handle ABI SOLiD data, as well as various assumptions about aligners and positions of indels.
+ea-utils:ea-utils - FASTQ processing utilities
+ec2:Amazon EC2 API Tools
+ecce:ECCE - PNNL Extensible Computational Chemistry Environment
+edena:Edena - de novo short reads assembler
+eeglab:EEGLAB - open source environment for electrophysiological signal processing
+eigen:Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms
+eigensoft:Eigensoft - genetics software
+eloper:ELOPER - Elongation of paired-end reads for de novo assembly
+emboss:EMBOSS - A collection of tools for molecular biology
+emergent:Emergent - Neural Network Simulation System
+enthought:Enthought Canopy is a comprehensive Python analysis environment
+erne:ERNE - The Extended Randomized Numerical alignEr
+esom:esom - Databionic ESOM tools
+espresso:ESPResSo - Extensible Simulation Package for Research on Soft matter
+exabayes:ExaBayes - Large Scale and Massively Parallel Bayesian Phylogenetic Inference
+examl:ExaML - Exascale Maximum Likelihood for phylogenetic inference using MPI
+exonerate:exonerate is a generic tool for pairwise sequence comparison.
+express:eXpress - streaming quantification for high-throughput sequencing
+falcon:FALCON - a set of tools for fast aligning long reads for consensus and assembly
+fasta:FASTA - Sequence Comparison
+fastqc:FastQC - Quality Control Application for Sequence Data
+fastx-toolkit:FASTX-Toolkit - a collection of command line tools for FASTA/FASTQ files
+fdtd:FDTD - 3d/2d maxwell solver
+fenics:FEniCS, automated, efficient solution of differential equations
+ferret:Ferret Data Visualization and Analysis
+ffmpeg:FFmpeg - Audio and Video Convertor
+fftw:The Fastest Fourier Transform in the West
+fgap:FGAP - automated genome gap closing tool
+fiji:Fiji - is just ImageJ
+finis:FinIS - In silico assembly validation and finishing
+firefox:Firefox - The web browser
+fithic:Fit-Hi-C - a tool for assigning statistical confidence estimates to intra-chromosomal contact maps produced by genome-wide genome
+architecture assays such as Hi-C
+flash:FLASH - Fast Length Adjustment of SHort reads
+fontconfig:fontconfig - library for configuring and customizing font access
+freebayes:Freebayes - haplotype-based variant detector
+freeglut:FreeGLUT - A completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
+freesurfer:FreeSurfer - Automated Tools for MRI Data
+fsl:FSL - Analysis Tools for Brain Imaging Data
+g3d:G3D - Open Source game engine, neede by vrg3d
+ga:Global array 5.3 using intel compilers
+gabedit:Gabedit: A Graphical User Interface to computational chemistry packages
+gam-ngs:GAM-NGS - Genomic Assemblies Merger for NGS data
+gapcloser:GapCloser - close gaps during genome scaffolding
+gapfiller:GapFiller - De novo assembler to fill the gap within paired reads
+gast:GAST - uses a reference database of SSU sequences to determine the taxonomy of hypervariable region tags
+gatk:GATK - suite of tools for NGS data
+gaussian:Gaussin v 09-c1 binary install from CD
+gaussview:GaussView
+gblocks:Gblocks - Selection of conserved blocks from multiple alignments
+gcc:GCC - GNU Compiler Collection
+gdal:GDAL - Geospatial Data Abstraction Library
+gdb:GNU Debugger
+geant:Geant4 - Particle Simulation Toolkit
+geneid:geneid - a program to predict genes in anonymous genomic sequences designed with a hierarchical structure
+genetorrent:GeneTorrent
+genometools:GenomeTools - versatile open source genome analysis software
+geos:GEOS - Geometry Engine, Open Source
+getfem++:getfem++ finite element library
+gfold:GFOLD - Generalized fold change for ranking differentially expressed genes from RNA-seq data
+ghc:glasgow haskell compiler
+ghostscript:An interpreter for the PostScript language and for PDF
+gibbs:The Gibbs Motif Sampler will allow you to identify motifs, conserved regions, in DNA or protein sequences.
+git:Git - Fast Version Control System
+gmap-gsnap:GMAP and GSNAP: genomic alignment programs
+gmin:GMIN - finding global minima and calculating thermodynamic properties from basin-sampling.
+gmsh:gmsh - 3D Finite Element Mesh Generator
+gnuplot:gnuplot - Graphing Utility
+gpaw:GPAW - Grid-based projector-augmented wave method
+gpaw-dip:GPAW - Grid-based projector-augmented wave method
+gperftools:Google Performance Tools
+grace:Grace Plotting and visualization tool
+grads:GrADS - Grid Analysis and Display System
+graphicsmagick:GraphicsMagick - Image Manipulation Library
+graphviz:Graphviz - Graph Visualization Software
+gromacs:GROMACS - mollecular dynamics program
+groopm:GroopM - Automagical metagenomic binning
+gsl:GSL - The GNU Scientific Library
+gurobi:gurobi optimizer
+h5utils:h5utils - Utilities for HDF5 files
+hammer:Hammer - error correction with non-uniform coverage
+hdf5:The Hierarchical Data Format v5
+hdf5-par:The Hierarchical Data Format v5 (Parallel)
+helisphere:HeliSphere - Open Source Bioinformatics Software
+hic:A collection of tools to map, filter and analyze Hi-C data.
+hiclib:hiclib - HiC correction library
+hifix:HiFiX - HIgh FIdelity Clustering of Sequences
+hmmer:HHMER - biosequence analysis using profile hidden Markov models
+homer:Software for motif discovery and next generation sequencing analysis
+hoomd-blue:hoomd-blue - general purpose particle simulation toolkit
+hotbit:hotbit - charge-self-consistent density-functional tight-binding code
+hpl:HPL - High-Performance Linpack Benchmark
+humann2:HUMAnN2: The HMP Unified Metabolic Analysis Network 2
+idba:IDBA - Iterative De Bruijn Graph De Novo Assembler
+idr: IDR: Reproducibility and automatic thresholding of ChIP-seq data
+igvtools:s package contains command line utilities for preprocessing, cottation feature count density (coverage), sorting, and indexing data files.
+imagemagick:ImageMagick - Image Manipulation Library
+intel:Intel Composer XE Compilers and MKL
+interproscan:InterPro is an integrated database of predictive protein signatures used for the classification and automatic annotation of proteins and genomes
+iraf:IRAF is the Image Reduction and Analysis Facility
+isis:ISIS - Planetary Image Processing Software
+JAGS:JAGS Just another Gibbs sampler
+jasper: Jasper libraries for WRF
+java:Java Developer's Kit (64-bit)
+jellyfish:Fast, Parallel k-mer Counting for DNA
+julia:Julia - high-level language for technical computing
+kallisto:kallisto - near optimal rna-seq quantification
+khmer:K-mer counting, filtering and graph traversal
+kmergenie:KmerGenie - estimates best k-mer length for de novo assembly
+kraken:Kraken - a taxonomic sequence classifier that assigns taxonomic labels to short DNA reads
+lammps:LAMMPS - Molecular Dynamics Simulator
+lapack:lapack - Linear Algebra PACKage
+last:LAST - Genomic-scale sequence comparison
+lastz:LASTZ - Improved pairwise alignment of genomic DNA
+lemon: LEMON - Library for Efficient Modeling and Optimization in Networks
+libpng:libpng compression for WRF
+liggghts:LIGGGHTS - LAMMPS Improved for General Granular and Granular Heat Transfer Simulations
+likwid:likwid - Lightweight Performance Tools
+macs:MACS - Model-based Analysis for ChIP
+macs:to run it please type: macs14 --help
+macs:to run it please type: macs2 --help
+macs:to run it please type: macs2 --help
+macs:to run it please type: macs2 --help
+mafft:MAFFT - Multiple alignment program for amino acid or nucleotide sequences
+maker:Maker - Genome Annotation Pipeline
+maple:Maple - Symbolic Algebra and Modeling Tool
+maq:Maq - Mapping and Assembly with Qualities
+masurca:MaSuRCA - whole genome assembly software
+mathematica:Mathematica - Technical Computing Software
+matlab:MATLAB - The Language Of Technical Computing
+mcl:MCL - Markov Cluster Algorithm for Graphs
+megahit:MEGAHIT -
+meme:MEME - Motif-based Sequence Analysis Tools
+meraculous:meraculous
+mercurial:Mercurial - a free, distributed source control management tool
+merdeep2:miRDeep2 is a completely overhauled tool which discovers microRNA genes by analyzing sequenced RNAs.
+merdeep2:need load the following modules: squid/1.9g randfold/2.0 bowtie/0.12.8 viennarna/1.8.5 merdeep2/2.0.0.5
+meren-utils:meren-utils - collection of scripts to work with Illumina paired-end data
+metamap:metamap - A Tool For Recognizing UMLS Concepts in Text
+metaphlan2:MetaPhlAn v2.0: Metagenomic Phylogenetic Analysis
+metaphyler:MetaPhyler - Estimating Bacterial Composition from Metagenomic Sequences
+metavelvet:MetaVelvet: a short read assember for metagenomics
+metaxa2:Metaxa2 - Improved Identification and Classification of SSU sequences in Environmental Datasets
+metis:METIS - Serial Graph Partitioning and Fill-reducing Matrix Ordering
+mip-scaffolder:MIP Scaffolder - Fast Scaffolding with Small Independent Mixed Integer Programs
+mira:MIRA - sequence assembler for whole genome and EST / RNAseq data
+mirdeep_star:MiRDeep*: An Integrated Application Tool For MiRNA Identification From RNA Sequencing Data
+mirexpress:mirexpress - Analyzing high-throughput sequencing data for profiling microRNA expression
+mne:MNE - MEG and EEG Preprocessing Tools
+mobster:Mobster
+modelsim:ModelSim SE
+Molpro:Molpro 2012.1.13 using Intel compilers and mvapich2/2.0rc-intel
+mosaik:Mosaik - reference-guided aligner
+mosek:Mosek Optmizer
+mothur:mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities
+mpack:mpack - Multiple precision arithmetic BLAS (MBLAS) and LAPACK (MLAPACK)
+mpeg2encode:mpeg2encode
+mpfi:MPFI - Multiple Precision Interval Arithmetic Library
+mpfr:MPFR - Floating Point Math Library
+mpich:mpich - High-Performance Portable MPI
+mplayer:Mplayer - multimedia player
+mrbayes:MrBayes - Bayesian Inference of Phylogeny
+MRIConvert:MRIConvert - a medical image file conversion utility
+mricro:MRIcro - medical image viewer
+mricrogl:MRIcroGL - medical image viewer
+mricron:mricron - mricro utilties
+mugsy:Mugsy - multiple whole genome alignment tool
+multidistribute:Multidistribute - Rates of Molecular Evolution
+multiwfn:Multiwfn
+multiz-tba:Multiz/TBA - local multiple sequence alignment tool
+multovl:MULTOVL Multiple overlaps of genomic regions
+mummer:MUMmer - Ultra-fast alignment of large-scale DNA and protein sequences
+mumps:MUMPS - Multifrontal Massively Parallel Sparse Direct Solver
+muscle:MUSCLE - Multiple Sequence Alignment
+mvapich2:The MVAPICH2 Message Passing Library
+mvapich2-gdr:The MVAPICH2 Message Passing Library + GPUDirect support
+myrna:Cloud-scale differential gene expression for RNA-seq
+mysql++:Mysql++
+nag-fortran-lib:NAG Fortran Library - The largest collection of reliable and supported numerical algorithms commercially available
+nano:nano - text editor
+nanocorr:nanocorr - Error correction for oxford nanopore reads
+nasa-asp:NASA Ames Stereo Pipeline - Automated Geodesy & Stereogrammetry Tools
+ncbi-toolkit:NCBI C++ Toolkit
+ncl:NCL - NCAR Command Language
+nco:NCO - netCDF Operators
+ncview:ncview - Visual browser for netCDF files
+netcdf:The Network Common Data Form
+neuron:Neuron - for empirically based simulations of neurons and networks of neurons
+nextclip:Nextclip = read preparation of data sequenced from Nextera LMP libraries
+novoalign:NovoAlign - short read mapper
+nvidia-driver:nvidia-driver - NVIDIA GPU Driver Libraries
+nwchem:NWChem - High-Performance Computational Chemistry
+openblas:Optimized BLAS Library Based on GotoBLAS2
+openbugs:OpenBUGS - Bayesian Inference Using Gibbs Sampling
+opencollada:OpenCollada Tools
+opencv:OpenCV - Open Source Computer Vision Library
+openexr:openexr - a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications
+openmpi:The OpenMPI Message Passing Library
+opera:Opera - Optimal Paired-End Read Assembler
+ovito:ovito - Open Visualization Tool
+p4est:p4est - Parallel AMR on Forests of Octrees
+pagit:PAGIT - Post Assembly Genome Improvement Toolkit
+paml:PAML - Phylogenetic Analysis by Maximum Likelihood
+pandaseq:align Illumina reads, optionally with PCR primers embedded in the sequence, and reconstruct an overlapping sequence
+papi:PAPI - Performance Application Programming Interface
+paraview:ParaView - Data Analysis and Visualization
+parmetis:ParMETIS - Parallel Graph Partitioning
+pastix:PaStiX Parallel Sparse matriX package
+patser:Patser find locations of patterns in sequence
+pauda:PAUDA - a high-throughput metagenomic protein database search tool
+pbalign:for aligning PacBio reads to reference sequences
+pbh5tools:pbdh5tools - is a collection of tools that can manipulate the content or extract data from two types of h5 files.
+pbjelly:PBJelly - Genome Upgrading using Long-Read Sequencing
+pbsuite:PBSuite - Software for Long-Read Sequencing Data from PacBio
+pdftk:pdftk - pdf toolkit
+pdsh:pdsh - Parallel Distributed Shell
+pe-assembler:PE-Assembler - De novo assembler using short paired-end reads
+penncnv:PennCNV - CNV detection from Illumina whole-genome SNP genotyping arrays
+perl:The Perl Programming Language
+petsc:PETSc - Portable, Extensible Toolkit for Scientific Computation
+pgi:PGI - Portland Group Compiler Suite
+phd2fasta:phd2fasta
+phrap:Phrap/Phred/Consed - genome assembler
+phylip:Phylip - package for inferring phylogenies
+phylobayes:Bayesian Monte Carlo Markov Chain sampler for phylogenetic reconstruction
+phyml:PhyML is a phylogeny software based on the maximum-likelihood principle.
+phymmbl: Taxonomic Classification of Metagenomic Short Reads
+phyutility:Phyutility (fyoo-til-i-te) is a command line program that performs simple analyses or modifications on both trees and data matrices.
+picard-tools:Java-based command-line utilities that manipulate SAM file
+pigz:pigz - parallel implementation of gzip
+pindel:pindel - genome data analizer
+plink:Plink - Whole genome data analysis toolset
+polyphen:PolyPhen - Polymorphism Phenotyping
+pov-ray:Persistence of Vision Ray Tracer
+price:PRICE - Paired-Read Iterative Contig Extension
+prinseq:PRINSEQ
+proovread:large-scale high-accuracy PacBio correction through iterative short read consensus
+prot4est:prot4EST - perl script to translate ESTs to putative peptides
+pyferret:Ferret Data Visualization and Analysis (Python encapsulation)
+pymol:PyMOL - A Python-enhanced molecular graphics tool
+pypy:PyPy - Fast, Alternative Implementation of Python
+python:The Python Programming Language
+qiime:QIIME - Quantitative Insights Into Microbial Ecology
+qt:Qt - Cross-Platform Application and UI Framework
+quake:Quake - Correct Substitution Sequencing Errors
+quantumespresso:Quantum Espresso - electronic-structure calculations and materials modeling at the nanoscale
+quip:QUIP - The QUIP package (GitHub) is a collection of software tools to carry out molecular dynamics simulations.
+quiver:PacBio variant and consensus caller (Quiver algorithm)
+R:The R Project for Statistical Computing
+randfold:Randfold compute the probability that, for a given RNA sequence, the Minimum Free Energy (MFE) of the secondary structure is different from a distribution of MFE computed with random sequences.
+raxml:RAxML - Randomized Accelerated Maximum Likelihood
+readscan:READSCAN - a highly scalable parallel program to identify non-host sequences and estimate their genome relative abundance in high-throughput sequence datasets
+reapr:REAPR - Recognising Errors in Assemblies using Paired Reads
+recon:RECON - a package for automated de novo identification of repeat families from genomic sequences
+repeatmasker:RepeatMasker - Screens DNA Sequences for Interspersed Repeats
+repeatmodeler:RepeatModeler is a de-novo repeat family identification and modeling package.
+repeatscout:RepeatScout - The purpose of the RepeatScout software is to identify repeat family sequences from genomes where hand-curated repeat databases
+reptile:Reptile - Short Read Error Correction
+retroseq:RetroSeq is a bioinformatics tool that searches for mobile element insertions from aligned reads in a BAM file and a library of reference transposable elements.
+rex:Region of Interest mapping
+rmblaster: RMBlast is a RepeatMasker compatible version of the standard NCBI BLAS suite. The primary difference between this distribution and the NCBI distribution is the addition of a new program "rmblastn" for use with RepeatMasker and RepeatModeler.
+rmc++:RMC++ - Reverse Monte Carlo Algorithm
+rnashapes:rnashapes - RNA shape mapping
+root:Root - A Data Analysis Framework
+rosetta:Rosetta - algorithms for computational modeling and analysis of protein structures
+rotd:ROTD
+rsem:RSEM - RNA-Seq by Expectation-Maximization
+rseqc:RSeQC - An RNA-seq Quality Control Package
+rstudio:RStudio - Integrated Development Environment (IDE) for R
+rtd:rtd - reference-free ddRADseq analysis tools
+ruby:The Ruby Programming Language
+sage:Sage is a free open-source mathematics software system
+salmon:Salmon - Rapid Alignment-free Quantification of Isoform Abundance
+samtools:SAMtools - Sequence Alignment/Map Format
+SAS:SAS statistical Analysis
+scala:Scala is a general purpose programming language designed to express common programming patterns in a concise, elegant, and type-safe way.
+scarpa:SCARPA - stand-alone scaffolding tool for NGS data
+scons:Scons - python based build environment
+scotch:SCOTCH - Software and libraries for sequential and parallel graph partitioning, static mapping and clustering, sequential mesh and hypergraph partitioning, and sequential and parallel sparse matrix block ordering
+seg3d:Seg3D volume segmentation and processing tool
+selscan:Selscan - calculates EHH-based scans for positive selection in genomes
+seqdb:SeqDB - High-throughput compressor for FASTQ files
+seqtk:Seqtk is a fast and lightweight tool for processing sequences in the FASTA or FASTQ format
+sextractor:Source Extractor: a software for making catalog of sources from astronomical images
+sextractor:sextractor.xsl is in %(rootdir)s/share
+sga:SGA - String Graph Assembler
+shogun:Shogun - A Large Scale Machine Learning Toolbox
+shrimp:SHRiMP - sensitive yet practical SHort Read Mapping
+siesta:SIESTA - electronic structure calculations and molecular dynamics simulations
+slatec:slatec - a comprehensive software library containing over 1400 general purpose mathematical and statistical routines written in Fortran 77.
+slepc:SLEPc, the Scalable Library for Eigenvalue Problem Computations
+slim:SLiM (Selection on Linked Mutations) is a forward population genetic simulation for studying linkage effects
+slurm-drmaa:an implementation of Open Grid Forum DRMAA 1.0 (Distributed Resource Management Application API) specification for submission and control of jobs to SLURM.
+smrtanalysis:SMRT Analysis - PacBio bioinformatics software suite
+SNAP-berkeley:Scalable Nucleotide Alignment Program
+snap-ucdavis:Semi-HMM-based Nucleic Acid Parser
+snpeff:SnpEff is a variant annotation and effect prediction tool. It annotates and predicts the effects of genetic variants (such as amino acid changes).
+soapdenovo2:SOAPdenovo2 - De Novo Draft Assembly for Human-Sized Genomes
+spades:SPAdes - St. Petersburg genome assembler
+sparsehash:sparsehash - extremely memory-efficient hash_map implementation
+spimap:SPIMAP - Species Informed Maximum A Posteriori Gene Tree Reconstruction
+spm:Statistical Parametric Mapping
+sqlite:SQLite - embedded SQL database engine
+squid:SQUID - C functions and utility programs for sequence analysis
+sratoolkit:SRA Toolkit - NCBI Sequence Read Archive
+stampy:Stampy - sensitive and fast mapping of Illumina sequence reads
+star:STAR - ultrafast universal RNA-seq aligner
+star-fusion:STAR-Fusion -
+stata:STATA - Data Analysis and Statistical Software
+sublime:sublime - Chemical Kinetics and Dynamics Tools
+suitesparse:SuiteSparse - Sparse Matrix Packages
+surpi:SURPI - computational pipeline for pathogen identification
+svdetect:svdetect - a tool to detect genomic structural variations from paired-end and mate-pair sequencing data
+svn:Subversion - Enterprise-class centralized version control for the masses
+swarm:The purpose of swarm is to provide a novel clustering algorithm that handles massive sets of amplicons.
+sweepfinder:sweepfinder
+swig: interface compiler that connects programs written in C and C++ with scripting languages
+swipe:SWIPE - Smith-Waterman with inter-sequence SIMD parallelisation
+synopsys:Synopsys - electronic design software (Licensed by Engineering)
+tabix:Tabix - Indexer for TAB-delimited genome position files
+talys:Talys - Nuclear reaction simulation
+tangram:tangram - structural variation detection
+tao:TAO Toolkit for Advanced Optimization
+tea:Tea - transposable element analysis pipeline
+tecplot:Tecplot 360/Focus - Visualization and Plot Software
+tesseract:tesseract - Open Source OCR Engine
+texlive:Texlive - resource to create TeX files
+tlex:T-lex - a computational pipeline that detects presence and/or absence of annotated individual transposable elements (TEs) using next-generation sequencing (NGS) data
+tophat:TopHat - fast splice junction mapper for RNA-Seq reads
+TORTOISE:TORTOISE
+totalview:Totalview from Rougue Wave
+trackvis:analysis of fiber track data from diffusion MRI tractography
+tramonto:Tramonto for Nanostructured Fluids in Materials and Biology
+trans-abyss:Analyze ABySS multi-k-assembled shotgun transcriptome data.
+trans-abyss:need load: bwa samtools abyss gmap-gsnap
+transdecoder:TransDecoder identifies candidate coding regions within transcript sequences, such as those generated by de novo RNA-Seq transcript assembly using Trinity, or constructed based on RNA-Seq alignments to the genome using Tophat and Cufflinks.
+transrate:Transrate is software for de-novo transcriptome assembly quality analysis.It examines your assembly in detail and compares it
+to experimental evidence such as the sequencing reads, reporting quality scores for contigs and assemblies
+treeview:Java Treeview - An Open Source, Extensible Viewer for Microarray Data in the PCL or CDT format.
+trilinos:Trilinos - Algorithms for Engineering and Scientific Problems
+trimgalore:Trim Galore - wrapper script to automate quality and adapter trimming
+trimmomatic:Trimmomatic - read trimming tool for Illumnia NGS data
+trinity:Trinity - RNA-Seq De Novo Assembly
+trinotate:Trinotate - Transcriptome Functional Annotation and Analysis
+tRNAscan:tRNAscan
+turbovnc:TurboVNC - High Performance Virtual Network Computing
+uclust:UCLUST offers search and clustering algorithms that are often orders of magnitude faster than BLAST
+udunits:UDUNITS - Library for handling of units of physical quantities
+usearch:USEARCH - Extreme high-throughput sequence analysis
+uvcdat:UVCDAT
+valgrind:Valgrind - Debugging and Profiling System
+vasp:VASP - Vienna Ab-initio Simulation Package
+vcftools:vcftools - a program package designed for working with VCF files
+velvet:Velvet - Sequence Assembler for Very Short Reads
+verilator:Verilator is the fastest free Verilog HDL simulator, and beats most commercial simulators.
+viennarna:RNA Secondary Structure Prediction and Comparison
+visit:VisIt - Parallel Visualization and Analysis Package
+vmd:Visual Molecular Dynamics
+vnc-apps:vnc-apps - helpful X tools for vnc sessions
+voro++:Voro++ - library for the computation of the Voronoi diagram
+votca:votca - molecular dynamics code
+vpython:vpython - experimental python based on wxpython
+vrpn:VRPN - Virtual Reality Peripheral Network
+vsfm:VisualSFM: A Visual Structure from Motion System
+vtk:VTK - The Visualization Toolkit
+vxl:VXL C++ Libraries for Computer Vision Research and Implementation
+wcstools:create, display and manipulate the world coordinate system of a FITS or IRAF image
+weblogo:WebLogo is a web based application designed to make the generation of sequence logos as easy and painless as possible
+wgs:Celera Assembler (CA) is a whole-genome shotgun (WGS) assembler for the reconstruction of genomic DNA sequence from WGS sequencing data.
+wise2:wise2 - a program for aligning proteins or protein HMMs to DNA
+wxWidgets:wxWidgets
+xcrysden: Xcrysden semishared binary v. 1.5.53
+xhmm:XHMM - eXome-Hidden Markov Model
+xsede:Globus Client for XSEDE
+yasra: YASRA - Comparative Genome Assembler
+zeromq:Zeromq Intelligent Transport Layer
+zlib:zlib compresion library
