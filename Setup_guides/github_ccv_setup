@@ -1,11 +1,32 @@
 Setting up Github on CCV
+***************************************************************************
+How to set up github with ccv
+***************************************************************************
+type the commands into the command line
 
+git config --global user.name "name"
+git config --global user.email "email"
 
+-to clone, go to desired directory, then
+git clone --bare https://github/location/name.git
+-get changelog
+cd name.git
+git push --mirror https://.../name.git
+-finish cloning
+git clone https://.../name.git
+-make changes normally
+-update changes to head with
+git add -A
+git commit -a -m "message here"
+-submit changes with
+git push -u origin master
+-check local vs commited files with
+git status
 
 ***************************************************************************
 HOW TO GENERATE KEYS
 ***************************************************************************
-Purpose: to not be required to enter email/password 
+Purpose: to not be required to enter email/password
 
 module load git
 git config --global user.name "YOURUSERNAME"
@@ -13,9 +34,9 @@ git config --global user.email "YOUREMAIL"
 ssh-keygen -t rsa -b 4096 -C "YOUREMAIL"
     save key to this path:
         ~/users/.ssh/id_rsagithub
-    no need to enter password, can just hit enter twice 
+    no need to enter password, can just hit enter twice
 can skip next line (this checks if an agent exists, should output a PID):
-eval "$(ssh-agent -s)"   
+eval "$(ssh-agent -s)"
 
 ssh-add ~/.ssh/id_rsagithub
 
@@ -38,5 +59,3 @@ Add new SSH key in "New SSH key"
 ***************************************************************************
 
 ***************************************************************************
-
-
