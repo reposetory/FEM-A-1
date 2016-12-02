@@ -8,9 +8,11 @@ INCLUDE_DIRECTORIES ( "/gpfs/runtime/opt/eigen/3.2.1/include/eigen3" )
 
 add_library(FEM
         inc/algorithm.h
-	inc/algorithm.cpp
-	inc/print_result.cpp
+      	inc/algorithm.cpp
+	      inc/print_result.cpp
         inc/read_input.cpp
+        inc/convergence.h
+        inc/convergence.cpp
 )
 target_include_directories(FEM PUBLIC inc)
 

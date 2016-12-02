@@ -105,11 +105,16 @@ int main(int argc, char* argv[]) {
     cout << "No solver for the input" << endl;
   }
 
-// convergence stability and accuracy
 /*
  save the solution to a data file
  */
     print_output(filename,solvername,grid,u_ini,u,h,k,T);
+
+    
+    // convergence stability and accuracy
+      string boundaryname;
+      boundaryname="1d_1"
+      convergence_1d( solvername, boundaryname,u_ini,grid, k,h, T);
 
     return 0;
 
