@@ -43,6 +43,9 @@ int main(int argc, char* argv[]) {
          else if (solvername=="DF" ){
             cout<< "The solver used is DuFort Frankel"<<endl;
          }
+         else if (solvername=="FE" ){
+            cout<< "The solver used is FEM"<<endl;
+         }
          else{
             cout << "Wrong input solver, default Backforward Euler will be used" << endl;
             solvername="BE";
@@ -101,6 +104,9 @@ int main(int argc, char* argv[]) {
   }
   else if (solvername=="DF" ){
       solver_DuFort_Frankel_1D(u,u_ini,grid,k,h,T);
+  }
+  else if (solvername=="FE" ){
+      solver_FEM_1D(u,u_ini,grid,k,h,T);
   }
   else{
     cout << "No solver for the input" << endl;

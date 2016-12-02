@@ -16,7 +16,7 @@ void initial_boundary(vector<double>& u_ini,vector<double>& grid){
 
     int ngrids=grid.size();
     for (int i=0;i<ngrids;i++){
-        u_ini[i]=sin(grid[i])+sin(110*grid[i]);
+        u_ini[i]=1+sin(grid[i])+sin(10*grid[i]);
  //       cout<<u_ini[i]<<endl;
     }
 
@@ -27,7 +27,7 @@ void initial_boundary(vector<double>& u_ini,vector<double>& grid){
 void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta=0.0){
   int ngrids=grid.size();
   for (int i=0;i<ngrids;i++){
-      u_ini[i]=sin(grid[i])+sin(110*grid[i])+delta;
+      u_ini[i]=1+sin(grid[i])+sin(10*grid[i])+delta;
 
   }
 }
@@ -249,10 +249,96 @@ void solver_DuFort_Frankel_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& 
 
 
 //1D FEM
+
+
+//local stiffness matrix
+void calculate_ele_stiff_1d(MatrixXd &B_ele,MatrixXd &A_ele,double x1,double x2){
+// use linear basis function for 1d problem
+
+         double h;
+         h=abs(x2-x1);
+
+         //element level stiffness matrix
+         A_ele(0,0)=1.0/h;
+         A_ele(1,1)=1.0/h;
+         A_ele(0,1)=-1.0/h;
+         A_ele(1,0)=-1.0/h;
+
+
+        // element level mass matrix
+        B_ele(0,0)=h/3;
+        B_ele(1,1)=h/3;
+        B_ele(0,1)=h/6;
+        B_ele(1,0)=h/6;
+
+
+}
+
+//main 1d fem
 void solver_FEM_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T) {
 
+//as a simple implememt. use backward euler for time integration and linear interpotation in element level
+
+int n_step,n_time;
+n_step=grid.size();
+n_time=T/k;
+
+//create the golbal mass matrix and stiffness matrix
+MatrixXd B(n_step,n_step), A(n_step,n_step);
+// for 1-D case create the connectivity from grid;
+
+MatrixXd element_set(n_step-1,2);
+
+for (int i=0;i<(n_step-1);i++){
+    element_set(i,0)=i;
+    element_set(i,1)=i+1;
+}
 
 
+//assemble the local element to global coordinate
+MatrixXd B_ele(2,2), A_ele(2,2);
+double x1,x2;//the coordinates of element points
+int global_x,global_y;
 
-  
+for (int i=0;i<(n_step-1);i++){
+    x1=grid[element_set(i,0)];
+    x2=grid[element_set(i,1)];
+    //get local stiffness
+    calculate_ele_stiff_1d(B_ele,A_ele, x1, x2);
+    //assmble the local stiffness matrix to global coordinates
+    for (int j=0;j<2;j++){
+      for(int k=0;k<2;k++){
+         global_x=element_set(i,j);
+         global_y=element_set(i,k);
+         B(global_x,global_y)=B(global_x,global_y)+B_ele(j,k);
+         A(global_x,global_y)=A(global_x,global_y)+A_ele(j,k);
+
+      }
+    }
+  }
+
+// solve the heat equation with back ward euler in time integration
+    MatrixXd u_t(n_step,1),u_tau( n_step,1);
+
+    for (int i=0;i<n_step;i++){
+      u_t(i)=u_ini[i];
+    }
+
+    for(int i=0;i<n_time;i++){
+
+      // solve the equation (B+k*A)*u_tau=B*u_t
+        // use the linear solve in Eigen class
+            ColPivHouseholderQR< MatrixXd> dec(B+k*A);
+            u_tau=dec.solve(B*u_t);
+
+    // store the result in the big matrix u
+      for (int j=0;j< n_step;j++){
+          u(i,j)=u_tau(j);
+      }
+    // prepare for the next iteration
+    u_t=u_tau;
+
+    }
+
+
 }
