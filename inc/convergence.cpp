@@ -10,7 +10,7 @@ using namespace std;
 
 void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end);
 
-void differences_1d(string outputfilename, string solvername,MatrixXd & u, MatrixXd & u_ini, Matrix & grid){
+void differences_1d(string outputfilename, string solvername,MatrixXd & u, MatrixXd & u_ini, MatrixXd & grid){
   //output u - u_ini per point per time step for plotting to turn into a video to show if plot flattens over time
   //print out yes/no
 
@@ -88,17 +88,17 @@ void convergence_1d(string solvername,string boundaryname,vector<double> &u_ini,
       cout << "No solver for the input" << endl;
     }
   // save the data for different cases
-  
+
   // print the result for the original solution
-  print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_real,MatrixXd& u_delta_plus,double& h,double& k,double& T);
+  print_output(filename, solvername, grids,u_real, u_delta_plus, h, k, T);
 
   //print the result with ini+delta
   string caselabel;
   caselabel=solvername+"_plus";
-  print_output(string filename,string caselabel,vector<double>& grids,vector<double>& u_ini_plus,MatrixXd& u_delta_plus,double& h,double& k,double& T);
+  print_output( filename, caselabel,grids,u_ini_plus, u_delta_plus, h, k, T);
 
   //print the result with ini-delta
   caselabel=solvername+"_minus";
-  print_output(string filename,string caselabel,vector<double>& grids,vector<double>& u_ini_minus,MatrixXd& u_delta_minus,double& h,double& k,double& T);
+  print_output( filename,caselabel,grids, u_ini_minus, u_delta_minus, h,k,T);
 
 }
