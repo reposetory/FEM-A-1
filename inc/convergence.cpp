@@ -10,10 +10,49 @@ using namespace std;
 
 void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end);
 
-void differences_1d(string outputfilename, string solvername,MatrixXd & u, MatrixXd & u_ini, MatrixXd & grid){
+void differences_1d(string outputfilename,string solvername,MatrixXd &u,vector<double> &u_ini,vector<double>  &grid,double& k,double& h,double& T){
   //output u - u_ini per point per time step for plotting to turn into a video to show if plot flattens over time
   //print out yes/no
+  cout<<solvername<<endl;
 
+  //use different solver
+    if (solvername=="BE" ) {
+        solver_back_euler_1D(u,u_ini,grid,k,h,T) ;
+      }
+    else if (solvername=="E" ){
+        solver_euler_1D(u,u_ini,grid,k,h,T) ;
+    }
+    else if (solvername=="CN" ){
+        solver_crank_nicolson_1D(u,u_ini,grid,k,h,T);
+    }
+    else if (solvername=="DF" ){
+        solver_DuFort_Frankel_1D(u,u_ini,grid,k,h,T);
+    }
+    else{
+      cout << "No solver for the input" << endl;
+    }
+
+
+  // calculate the step difference
+  MatrixXd u_diff=u;
+
+  for(int i=0;i<u.rows();i++){
+    if(i==0){
+      for(int j=0;j<u.cols();j++){
+        u_diff(i,j)=u(i,j)-u_ini[j];
+      }
+    }
+    else{
+      for(int j=0;j<u.cols();j++){
+          u_diff(i,j)=u(i,j)-u(i-1,j);
+      }
+    }
+  }
+
+  //print the difference matrix into file
+  string caselabel;
+  caselabel=solvername+"_difference";
+  print_output( outputfilename, caselabel,grid,u_ini, u_diff, h, k, T);
 
 
 
@@ -89,10 +128,6 @@ void convergence_1d(string outputfilename,string solvername,string boundaryname,
     }
   // save the data for different cases
 
-  // print the result for the original solution
-
-  print_output(outputfilename, solvername, grid,u_ini,u_real, h, k, T);
-
   //print the result with ini+delta
   string caselabel;
   caselabel=solvername+"_plus";
@@ -101,5 +136,9 @@ void convergence_1d(string outputfilename,string solvername,string boundaryname,
   //print the result with ini-delta
   caselabel=solvername+"_minus";
   print_output( outputfilename,caselabel,grid, u_ini_minus, u_delta_minus, h,k,T);
+
+  // print the result for the original solution
+   caselabel=solvername+"_real";
+  print_output(outputfilename, caselabel, grid,u_ini,u_real, h, k, T);
 
 }

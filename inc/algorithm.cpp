@@ -8,6 +8,8 @@
 using namespace Eigen;
 using namespace std;
 
+void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end);
+
 //boundary class
 // generate a simple initiial boundary condition u(,0)=sin(x)+sin(10x)
 void initial_boundary(vector<double>& u_ini,vector<double>& grid){
@@ -41,9 +43,12 @@ void solver_back_euler_1D(MatrixXd& u,vector<double>& u_ini,vector<double>& grid
 // set the initial value of u(x)
    for(int i=0;i<n_step;i++){
        u_t(i,0)=u_ini[i];
+       //cout<<u_t(i,0)<<endl;
    }
  //  cout<<"the u_ini is "<<'\n'<<u_t<<endl;
 // use the numerical scheme for the heat equation up to time T
+  cout<<"k,h"<<k<<" "<<h<<endl;
+  cout<<"step,time"<<n_step<<" "<<n_time<<endl;
    for(int i=0;i<n_time;i++){
 
        // generate the numerical operator matrix Q_factor
@@ -72,12 +77,18 @@ void solver_back_euler_1D(MatrixXd& u,vector<double>& u_ini,vector<double>& grid
        // store the result in u
        for (int j=0;j< n_step;j++){
            u(i,j)=u_tau(j);
+  //         cout<<u(i,j);
        }
        // prepare for the next iteration
        u_t=u_tau;
 
    }
-
+/*
+  string filename,solvername;
+  filename="out_debug";
+  solvername="BE";
+   print_output(filename,solvername,grid,u_ini,u,h,k,T);
+*/
 
 }
 
@@ -234,4 +245,14 @@ void solver_DuFort_Frankel_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& 
 
     }
 
+}
+
+
+//1D FEM
+void solver_FEM_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T) {
+
+
+
+
+  
 }

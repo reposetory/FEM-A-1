@@ -117,6 +117,8 @@ int main(int argc, char* argv[]) {
       boundaryname="1d_1";
       convergence_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
 
+      differences_1d(filename, solvername,u,u_ini,grid,k, h, T);
+
     return 0;
 
 }
