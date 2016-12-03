@@ -24,6 +24,9 @@ if vnc doesn't work, update to the latest version of java
 *********************************************************************
 x11 forwarding
 *********************************************************************
+fast way to check if x-forwarding is working: open xclock
+xclock
+
 ---------MAC-----------------
 download and install x11 forwarding
 program recommended by ccv:
