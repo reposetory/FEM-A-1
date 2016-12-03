@@ -4,6 +4,8 @@
 #include <cmath>
 #include <Eigen/Dense>
 #include <algorithm.h>
+#include <print_result.h>
+#include <read_input.h>
 
 using namespace Eigen;
 using namespace std;

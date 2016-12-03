@@ -3,7 +3,8 @@
 #include <vector>
 #include <cmath>
 #include <Eigen/Dense>
-
+#include <print_result.h>
+#include <read_input.h>
 
 using namespace Eigen;
 using namespace std;
@@ -11,7 +12,7 @@ using namespace std;
 void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end);
 
 //boundary class
-// generate a simple initiial boundary condition u(,0)=sin(x)+sin(10x)
+// generate a simple initiial boundary condition u(,0)=1+sin(x)+sin(10x)
 void initial_boundary(vector<double>& u_ini,vector<double>& grid){
 
     int ngrids=grid.size();
@@ -23,7 +24,7 @@ void initial_boundary(vector<double>& u_ini,vector<double>& grid){
 
 }
 
-//a sample boundary condtion with a disturbulation u(,0)=sin(x)+sin(10x)+delta
+//a sample boundary condtion with a disturbulation u(,0)=1+sin(x)+sin(10x)+delta
 void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta=0.0){
   int ngrids=grid.size();
   for (int i=0;i<ngrids;i++){

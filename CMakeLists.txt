@@ -11,6 +11,8 @@ add_library(FEM
       	inc/algorithm.cpp
 	      inc/print_result.cpp
         inc/read_input.cpp
+        inc/print_result.h
+        inc/read_input.h
         inc/convergence.h
         inc/convergence.cpp
 )

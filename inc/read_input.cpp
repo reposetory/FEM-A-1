@@ -14,11 +14,11 @@ we used a standard test input for 1D sample
     int N_space;
     int i=0;
 
-    N_space=150;
+    N_space=100;
     h_space=2*PI/(N_space+1);
-    //k_time=h_space*h_space/3;
-    k_time=h_space;
-    T_end=2* PI;
+    k_time=h_space*h_space/3;
+    //k_time=h_space;
+    T_end= PI;
    for (i;i<=N_space;i++){
        grids.push_back(i*h_space);
  //      cout<<grids[i]<<endl;

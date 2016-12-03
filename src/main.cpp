@@ -4,13 +4,13 @@
 #include <vector>
 #include <Eigen/Dense>
 #include <convergence.h>
+#include <print_result.h>
+#include <read_input.h>
 
 using Eigen::MatrixXd;
 using namespace std;
 
 void read_input(string filename,vector<double>&  grids,double& h_space,double& k_time,double& T_end);
-
-void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end);
 
 int main(int argc, char* argv[]) {
 
