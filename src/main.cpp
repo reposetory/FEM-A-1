@@ -80,15 +80,15 @@ int main(int argc, char* argv[]) {
 
 //for one-dimensional demo; assume 2pi periodic,
 //initial condition is u(,0)=sin(x)+sin(10x)
-  int ngrids;
+  int ngrids,ntime;
   ngrids=grid.size();
+  ntime=T/k;
   vector<double> u_ini(ngrids,0);
   initial_boundary(u_ini,grid);
 
 // solve the 1D heat equation with the given parameters
 
-  int ntime;
-  ntime=T/k;
+
   MatrixXd u(ntime,ngrids);
 
 
@@ -118,12 +118,13 @@ int main(int argc, char* argv[]) {
     print_output(filename,solvername,grid,u_ini,u,h,k,T);
 
 
-    // convergence stability and accuracy
+    // convergence and stability
+      differences_1d(filename, solvername,u,u_ini,grid,k, h, T);
       string boundaryname;
       boundaryname="1d_1";
       convergence_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
 
-      differences_1d(filename, solvername,u,u_ini,grid,k, h, T);
+
 
     return 0;
 

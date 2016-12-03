@@ -9,8 +9,6 @@
 using namespace Eigen;
 using namespace std;
 
-void print_output(string filename,string solvername,vector<double>& grids,vector<double>& u_ini,MatrixXd& u,double& h_space,double& k_time,double& T_end);
-
 //boundary class
 // generate a simple initiial boundary condition u(,0)=1+sin(x)+sin(10x)
 void initial_boundary(vector<double>& u_ini,vector<double>& grid){
@@ -25,7 +23,7 @@ void initial_boundary(vector<double>& u_ini,vector<double>& grid){
 }
 
 //a sample boundary condtion with a disturbulation u(,0)=1+sin(x)+sin(10x)+delta
-void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta=0.0){
+void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta){
   int ngrids=grid.size();
   for (int i=0;i<ngrids;i++){
       u_ini[i]=1+sin(grid[i])+sin(10*grid[i])+delta;
@@ -34,7 +32,7 @@ void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta=0.0){
 }
 
 //backward euler ALGORITHM
-void solver_back_euler_1D(MatrixXd& u,vector<double>& u_ini,vector<double>& grid,double& k,double& h,double& T) {
+void solver_back_euler_1D(MatrixXd& u,vector<double> u_ini,vector<double> grid,double k,double h,double T) {
 
    int n_step=grid.size();
    int n_time=T/k;

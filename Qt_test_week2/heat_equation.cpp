@@ -32,8 +32,8 @@ void heat_equation::on_goButton_clicked()
     out<<total_time<<endl;
     QString output_file_name = ui->output_file_name->text();
     out<<output_file_name<<endl;
-
-    QString filename="parameters.txt";
+   //save a txt file containing the input parameters into lucal folder 
+    QString filename="./parameters.txt";
     QFile file( filename );
     if ( file.open(QIODevice::ReadWrite) )
     {
