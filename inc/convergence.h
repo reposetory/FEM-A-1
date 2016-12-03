@@ -14,7 +14,7 @@ using namespace std;
 
 
 // calculate differences between two timesteps, for convergence
-void differences_1d(string outputfilename,string solvername,MatrixXd & u,vector<double> u_ini,vector<double>  grid,double k,double h,double T);
+void differences_1d(string outputfilename,string solvername,MatrixXd &u,vector<double> u_ini,vector<double>  grid,double k,double h,double T);
         //output u - u_ini per point per time step for plotting to turn into a video to show if plot flattens over time
         //print out yes/no
 // 1D (2D periodic boundary conditions) convergence stability and accuracy for the 1d four basic algorithms

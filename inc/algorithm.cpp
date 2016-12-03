@@ -11,7 +11,7 @@ using namespace std;
 
 //boundary class
 // generate a simple initiial boundary condition u(,0)=1+sin(x)+sin(10x)
-void initial_boundary(vector<double>& u_ini,vector<double>& grid){
+void initial_boundary(vector<double>& u_ini,vector<double> grid){
 
     int ngrids=grid.size();
     for (int i=0;i<ngrids;i++){
@@ -23,7 +23,7 @@ void initial_boundary(vector<double>& u_ini,vector<double>& grid){
 }
 
 //a sample boundary condtion with a disturbulation u(,0)=1+sin(x)+sin(10x)+delta
-void boundary_1d_1(vector<double>& u_ini,vector<double>& grid,double delta){
+void boundary_1d_1(vector<double>& u_ini,vector<double> grid,double delta){
   int ngrids=grid.size();
   for (int i=0;i<ngrids;i++){
       u_ini[i]=1+sin(grid[i])+sin(10*grid[i])+delta;
@@ -36,7 +36,7 @@ void solver_back_euler_1D(MatrixXd& u,vector<double> u_ini,vector<double> grid,d
 
    int n_step=grid.size();
    int n_time=T/k;
-   MatrixXd Q_factor( n_step, n_step);
+   MatrixXd Q_factor=MatrixXd::Zero( n_step, n_step);
    MatrixXd u_t( n_step,1),u_tau( n_step,1);
 
 // set the initial value of u(x)
@@ -69,6 +69,20 @@ void solver_back_euler_1D(MatrixXd& u,vector<double> u_ini,vector<double> grid,d
 
  // solve the equation Q_factor*u_tau=u_t
    // use the linear solve in Eigen class
+/*
+   for(int j=0;j<n_step;j++){
+        for (int k=0;k<n_step;k++){
+          cout<<Q_factor(j,k);
+        }
+        cout<<'\n';
+   }
+   for(int j=0;j<n_step;j++){
+
+          cout<<u_t(j);
+
+   }
+
+   */
        ColPivHouseholderQR< MatrixXd> dec(Q_factor);
        u_tau=dec.solve(u_t);
  //      cout<<"the new u_tau is "<<'\n'<<u_tau<<endl;
@@ -94,7 +108,7 @@ void solver_back_euler_1D(MatrixXd& u,vector<double> u_ini,vector<double> grid,d
 
 //==============================================================================//
 // euler ALGORITHM
-void solver_euler_1D(MatrixXd& u,vector<double>& u_ini,vector<double>& grid,double& k,double& h,double& T) {
+void solver_euler_1D(MatrixXd& u,vector<double> u_ini,vector<double> grid,double k,double h,double T) {
 
   int n_step=grid.size();
   int n_time=T/k;
@@ -137,10 +151,11 @@ void solver_euler_1D(MatrixXd& u,vector<double>& u_ini,vector<double>& grid,doub
 
 //============================================================//
 
-void solver_crank_nicolson_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T){
+void solver_crank_nicolson_1D(MatrixXd &u,vector<double> u_ini,vector<double> grid,double k,double h,double T){
   int n_step=grid.size();
   int n_time=T/k;
-  MatrixXd Q_factor_left( n_step, n_step),Q_factor_right(n_step, n_step);
+  MatrixXd Q_factor_left=MatrixXd::Zero( n_step, n_step);
+  MatrixXd Q_factor_right=MatrixXd::Zero( n_step, n_step);
   MatrixXd u_t( n_step,1),u_tau( n_step,1);
 
 // set the initial value of u(x)
@@ -203,7 +218,7 @@ void solver_crank_nicolson_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& 
 }
 
 
-void solver_DuFort_Frankel_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T){
+void solver_DuFort_Frankel_1D(MatrixXd &u,vector<double> u_ini,vector<double> grid,double k,double h,double T){
 
 
     int n_step=grid.size();
@@ -274,7 +289,7 @@ void calculate_ele_stiff_1d(MatrixXd &B_ele,MatrixXd &A_ele,double x1,double x2)
 }
 
 //main 1d fem
-void solver_FEM_1D(MatrixXd &u,vector<double> &u_ini,vector<double>& grid,double& k,double& h,double& T) {
+void solver_FEM_1D(MatrixXd &u,vector<double> u_ini,vector<double> grid,double k,double h,double T) {
 
 //as a simple implememt. use backward euler for time integration and linear interpotation in element level
 
