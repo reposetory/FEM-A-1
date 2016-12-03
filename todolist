@@ -34,12 +34,8 @@ Dec 2 Fri #3
 -[yunxing] get Qt to work in ccv (for now use vnc) 
     -[yunxing] get Qt to write input to a file
 
-    
--[x] finish and verify all 1D algorithms work properly
--[all] write updates for UPDATE 2
--[] put updates together, proofread, submit
-
-
+-[] reorganize repository...
+-[] modify printoutput() to print proper format
 
 
 
@@ -49,7 +45,9 @@ Dec 2 Fri #3
 Dec 6 Sun &&&  UPDATE REPORT 2 DUE &&&
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
-
+-[x] finish and verify all 1D algorithms work properly
+-[all] write updates for UPDATE 2
+-[] put updates together, proofread, submit
 
 
 
