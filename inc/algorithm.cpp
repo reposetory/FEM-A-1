@@ -254,9 +254,11 @@ void solver_DuFort_Frankel_1D(MatrixXd &u,vector<double> u_ini,vector<double> gr
             u(i,j)=u_tau(j);
         }
         // prepare for the next iteration
-        u_pre=u_t;
-        u_t=u_tau;
 
+        for (int j=0;j< n_step;j++){
+          u_pre(j)=u_t(j);
+          u_t(j)=u_tau(j);
+        }
     }
 
 }

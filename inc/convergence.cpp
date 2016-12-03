@@ -42,18 +42,18 @@ void differences_1d(string outputfilename,string solvername,MatrixXd &u,vector<d
 
 
   // calculate the step difference
-  MatrixXd u_diff(ntime,ngrids);
+  MatrixXd u_diff=MatrixXd::Zero(ntime,ngrids);
   MatrixXd error=MatrixXd::Zero( ntime, 1);
 
-  for(int i=0;i<u_con.rows();i++){
+  for(int i=0;i<ntime;i++){
     if(i==0){
-      for(int j=0;j<u_con.cols();j++){
+      for(int j=0;j<ngrids;j++){
         u_diff(i,j)=u_con(i,j)-u_ini[j];
         error(i)=error(i)+u_diff(i,j)*u_diff(i,j);
       }
     }
     else{
-      for(int j=0;j<u_con.cols();j++){
+      for(int j=0;j<ngrids;j++){
           u_diff(i,j)=u_con(i,j)-u_con(i-1,j);
           error(i)=error(i)+u_diff(i,j)*u_diff(i,j);
       }
@@ -66,7 +66,7 @@ void differences_1d(string outputfilename,string solvername,MatrixXd &u,vector<d
   //print the difference matrix into file
   string caselabel;
   caselabel=solvername+"_difference";
-  print_output( outputfilename, caselabel,grid,u_ini, u_diff, h, k, T);
+  print_output( outputfilename, caselabel,grid,u_ini,  u_diff, h, k, T);
 
  // determine the convergence
  double com_eror=1.e-6;
