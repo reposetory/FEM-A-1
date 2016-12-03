@@ -1,4 +1,4 @@
-detailed plans to DO BY 
+detailed plans to DO BY
 
 *************************************************************
 Nov 30 Weds  #2
@@ -12,7 +12,7 @@ Nov 30 Weds  #2
 -[] make sure everyone can compile/run on ccv
 
 
-    
+
 
 
 
@@ -21,34 +21,34 @@ Dec 2 Fri #3
 *************************************************************
 [get 1D  fully working, all parts run together on ccv]
 
--[yunxing] get Qt to work with code (creates input file)
--[zhi] write FEM solver for 1D 
--[zhi] make function to calculate convergence and/or accuracy 1D 
--[helena] function to reformat output for plotting
--[helena] make code to do automatic visualization in ccv (vtk/gnuplot/matlab?)
--[helena] make default input file generator 1D
-    -[] start with evenly spaced 1D mesh 
-    -[] include default values for mesh spacing, time step, start value, algorithm, function 
--[yunxing] make input file reader 1D for Qt and the code
--[x] make output file generator 1D 
--[yunxing] get Qt to work in ccv (for now use vnc) 
-    -[yunxing] get Qt to write input to a file
+-[x] get Qt to work with code (creates input file)
+-[x] write FEM solver for 1D
+-[x] make function to calculate convergence and/or accuracy 1D (bugs with implict methods)
+-[x] function to reformat output for plotting(modify the output file)
+-[x] make code to do automatic visualization in ccv (vtk/gnuplot/matlab?)(call from main function )
+-[x]] make default input file generator 1D
+    -[] start with evenly spaced 1D mesh
+    -[] include default values for mesh spacing, time step, start value, algorithm, function
+-[x] make input file reader 1D for Qt and the code
+-[x] make output file generator 1D
+-[x] get Qt to work in ccv (for now use vnc)
+    -[x] get Qt to write input to a file
 
--[] reorganize repository...
--[] modify printoutput() to print proper format
+-[x] reorganize repository...
+
 
 
 
 
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Dec 6 Sun &&&  UPDATE REPORT 2 DUE &&&
+Dec4 Sun &&&  UPDATE REPORT 2 DUE &&&
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 
 -[x] finish and verify all 1D algorithms work properly
 -[all] write updates for UPDATE 2
 -[] put updates together, proofread, submit
-
+-[] modify printoutput() to print proper format
 
 
 
@@ -64,7 +64,7 @@ Dec 5 Mon #4
 -[] write 2d higher order accuracy scheme
 -[] write 2d mesh generation
 -[] write 2d convergence/accuracy checker
--[] Qt allows 2D support 
+-[] Qt allows 2D support
 -[] make automatic visualization to plot in 2D
 
 
@@ -98,7 +98,7 @@ Dec 12 Mon &&&  FINAL CODE DUE &&&
 // more boundary conditions
 // more solver algorithms
 // 3d versions of everything
-// rewrite everything to be "good programming practice" (templates, functions that handle both 1D and 3D) 
+// rewrite everything to be "good programming practice" (templates, functions that handle both 1D and 3D)
 // nonlinear time discretization
 // compare many sample cases with matlab or other program
 
@@ -115,7 +115,7 @@ Dec 15 Thu #
 
 -[] describe each function (input/output, purpose, dependencies, etc)
 -[] write complete installation/setup instructions to get the code to work on ccv
-    -[] include troubleshooting/special notes, required version numbers 
+    -[] include troubleshooting/special notes, required version numbers
 -[] write step-by-step guide to using the program
     -[] describe options, possible choices
 -[] write how code handles bad input, errors, exceptions, etc
@@ -133,23 +133,3 @@ Dec 15 Thu #
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 Dec 19 Mon &&&  FINAL REPORT DUE &&&
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
