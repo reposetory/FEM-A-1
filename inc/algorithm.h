@@ -22,7 +22,7 @@ void solver_euler_1D(MatrixXd &u,vector<double> u_ini,vector<double> grid,double
 void solver_crank_nicolson_1D(MatrixXd &u,vector<double> u_ini,vector<double> grid,double k,double h,double T) ;
 //1D Dufort-Frankel
 void solver_DuFort_Frankel_1D(MatrixXd &u,vector<double> u_ini,vector<double> grid,double k,double h,double T) ;
-//1D FEM
+//1D FEM algorithm
 void solver_FEM_1D(MatrixXd &u,vector<double> u_ini,vector<double> grid,double k,double h,double T) ;
 
 

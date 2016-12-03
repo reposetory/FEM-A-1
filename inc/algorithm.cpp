@@ -298,7 +298,7 @@ n_step=grid.size();
 n_time=T/k;
 
 //create the golbal mass matrix and stiffness matrix
-MatrixXd B(n_step,n_step), A(n_step,n_step);
+MatrixXd B=MatrixXd::Zero( n_step, n_step), A=MatrixXd::Zero( n_step, n_step);
 // for 1-D case create the connectivity from grid;
 
 MatrixXd element_set(n_step-1,2);

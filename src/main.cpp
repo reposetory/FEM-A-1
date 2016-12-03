@@ -79,14 +79,13 @@ int main(int argc, char* argv[]) {
 /*
  save the solution to a data file
  */
-    print_output(filename,solvername,grid,u_ini,u,h,k,T);
-
+       print_output(filename,solvername,grid,u_ini,u,h,k,T);
 
     // convergence and stability
       differences_1d(filename, solvername,u,u_ini,grid,k, h, T);
       string boundaryname;
       boundaryname="1d_1";
-      convergence_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
+      stability_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
     }
     else if(dimension==2){
 
