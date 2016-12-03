@@ -26,14 +26,16 @@ int main(int argc, char* argv[]) {
 // h is the time step,T is the total time,k is the space step
   string filename,solvername,inputfile;
   vector<double> grid;
-  double k,h,T;
+  double k,h,T,dimension;
   inputfile="parameters";
 
-  read_input(inputfile,filename,solvername, grid,h,k,T);
+
+  read_input(inputfile,filename,solvername, grid,h,k,T,dimension);
   cout<<"filename and solvername is "<<filename<<" "<<solvername<<" "<<endl;
   cout<<"k,h,T are "<<k<<" "<<h<<" "<<T<<endl;
   cout<<"the total number of grids are "<<grid.size()<<endl;
 
+  if(dimesion==1){
 
 /*
  solve the heat equation ut=uxx
@@ -84,7 +86,10 @@ int main(int argc, char* argv[]) {
       string boundaryname;
       boundaryname="1d_1";
       convergence_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
+    }
+    else if(dimension==2){
 
+    }
 
 
     return 0;

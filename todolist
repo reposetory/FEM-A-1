@@ -53,24 +53,30 @@ Dec4 Sun &&&  UPDATE REPORT 2 DUE &&&
 
 
 
+
+
+
+
 *************************************************************
-Dec 5 Mon #4
+Dec 6 Tues #4
 *************************************************************
 [make 2D versions of everything]
 
--[] write 2D euler
--[] write 2d backward euler
--[] write 2d crank nicholson
--[] write 2d higher order accuracy scheme
--[] write 2d mesh generation
--[] write 2d convergence/accuracy checker
--[] Qt allows 2D support
--[] make automatic visualization to plot in 2D
+-[yunxing] write 2D euler
+-[yunxing] write 2d backward euler
+-[yunxing] write 2d crank nicholson
+-[yunxing] write 2d DuFort_Frankel
+-[zhi] 2d fem
+-[helena] write 2d convergence/stability checker
+-[zhi] add multithreads to 1D stability check
+-[yunxing] Qt allows 2D support(JUST add y)
+-[helena] make automatic visualization to plot in 2D()
 
+meeting 4:30 at bh lobby
 
 
 *************************************************************
-Dec 7 Wed #5
+Dec 8 Thur #5
 *************************************************************
 [make 2D versions of everything]
 

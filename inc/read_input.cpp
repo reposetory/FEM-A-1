@@ -10,7 +10,7 @@
 using namespace std;
 const double PI = 3.141592653589793238463;
 
-void read_input(string input_filename, string& filename, string& solvername, vector<double>& grids, double& h_space, double& k_time, double& T_end) {
+void read_input(string input_filename, string& filename, string& solvername, vector<double>& grids, double& h_space, double& k_time, double& T_end,int & dimension) {
 	/*
 	for the demo code, instead of read the requied information form file,
 	we used a standard test input for 1D sample
@@ -61,7 +61,7 @@ void read_input(string input_filename, string& filename, string& solvername, vec
 	solvername = num_scheme;
 	filename = output_filename;
 	N_space = 2 * PI / h_space - 1;
-
+  dimension=dim;
 	for (i; i <= N_space; i++) {
 		grids.push_back(i*h_space);
 		//      cout<<grids[i]<<endl;
