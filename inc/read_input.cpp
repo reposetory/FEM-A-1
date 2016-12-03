@@ -27,7 +27,7 @@ void read_input(string input_filename, string& filename, string& solvername, vec
 	///////////////////// read in parameter.txt file
 	string filename_full;
 	ifstream myReadFile;
-	filename_full = "C:\\Users\\Daegyoum\\Documents\\test4_Qt\\" + input_filename + ".txt";
+	filename_full = "./QT/" + input_filename + ".txt";
 	myReadFile.open(filename_full);
 	char output[100];
 	if (myReadFile.is_open()) {
@@ -55,12 +55,12 @@ void read_input(string input_filename, string& filename, string& solvername, vec
 
 	cout <<"the input parameters are: "<< '\n'<<"dimension of the problem: "<<dim << '\n' << "numerical scheme: "<<num_scheme << '\n' <<"time step size: "<< k << '\n'<<"space step size: " << h << '\n'<<"total time: " << T << '\n'<<"output file name: " << output_filename << endl;
 
-	h_space = h; 
-	k_time = k; 
+	h_space = h;
+	k_time = k;
 	T_end = T;
 	solvername = num_scheme;
 	filename = output_filename;
-	N_space = 2 * PI / h_space - 1; 
+	N_space = 2 * PI / h_space - 1;
 
 	for (i; i <= N_space; i++) {
 		grids.push_back(i*h_space);

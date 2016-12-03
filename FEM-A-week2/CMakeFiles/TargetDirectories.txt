@@ -1,4 +1,0 @@
-/users/guest264/FEM-A-week1/FEM-A-week1/CMakeFiles/FEM.dir
-/users/guest264/FEM-A-week1/FEM-A-week1/CMakeFiles/edit_cache.dir
-/users/guest264/FEM-A-week1/FEM-A-week1/CMakeFiles/main.dir
-/users/guest264/FEM-A-week1/FEM-A-week1/CMakeFiles/rebuild_cache.dir

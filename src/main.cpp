@@ -24,11 +24,12 @@ int main(int argc, char* argv[]) {
 // variables that define a numerical scheme
 // grid is the space discretization
 // h is the time step,T is the total time,k is the space step
-  string filename,solvername;
+  string filename,solvername,inputfile;
   vector<double> grid;
   double k,h,T;
+  inputfile="parameters";
 
-  read_input("parameters",filename,solvername, grid,h,k,T);
+  read_input(inputfile,filename,solvername, grid,h,k,T);
   cout<<"filename and solvername is "<<filename<<" "<<solvername<<" "<<endl;
   cout<<"k,h,T are "<<k<<" "<<h<<" "<<T<<endl;
   cout<<"the total number of grids are "<<grid.size()<<endl;

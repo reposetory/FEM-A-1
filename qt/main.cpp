@@ -8,7 +8,5 @@ int main(int argc, char *argv[])
     heat_equation w;
     w.show();
 
-
-
     return a.exec();
 }
