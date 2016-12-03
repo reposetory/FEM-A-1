@@ -10,7 +10,7 @@
 using namespace std;
 const double PI = 3.141592653589793238463;
 
-void read_input(string filename, string& solvername, vector<double>& grids, double& h_space, double& k_time, double& T_end) {
+void read_input(string input_filename, string& filename, string& solvername, vector<double>& grids, double& h_space, double& k_time, double& T_end) {
 	/*
 	for the demo code, instead of read the requied information form file,
 	we used a standard test input for 1D sample
@@ -27,7 +27,7 @@ void read_input(string filename, string& solvername, vector<double>& grids, doub
 	///////////////////// read in parameter.txt file
 	string filename_full;
 	ifstream myReadFile;
-	filename_full = "C:\\Users\\Daegyoum\\Documents\\test4_Qt\\" + filename + ".txt";
+	filename_full = "C:\\Users\\Daegyoum\\Documents\\test4_Qt\\" + input_filename + ".txt";
 	myReadFile.open(filename_full);
 	char output[100];
 	if (myReadFile.is_open()) {
@@ -59,6 +59,7 @@ void read_input(string filename, string& solvername, vector<double>& grids, doub
 	k_time = k; 
 	T_end = T;
 	solvername = num_scheme;
+	filename = output_filename;
 	N_space = 2 * PI / h_space - 1; 
 
 	for (i; i <= N_space; i++) {
