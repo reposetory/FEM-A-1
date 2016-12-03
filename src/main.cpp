@@ -10,53 +10,12 @@
 using Eigen::MatrixXd;
 using namespace std;
 
-void read_input(string filename,vector<double>&  grids,double& h_space,double& k_time,double& T_end);
+
 
 int main(int argc, char* argv[]) {
 
-    string filename,solvername;
-    //default solver is Backward Euler
-    solvername="BE";
-    switch (argc) {
 
-        case 3 :    solvername = argv[2];
-        case 2 :    filename=argv[1];
-            break;
-        case 1 :    cout<<"please enter the file name"<<endl;
-                    cin>>filename;
-            break;
-        default :   std::cerr << "Bad number of input parameters!" << std::endl;
-            return(-1);
-    }
-// summary of the input information
-    cout<< "the outfile will be named as "<<filename<<endl;
 
-         if(solvername=="BE" ){
-          cout<< "The solver used is Backforward Euler "<<endl;
-         }
-         else if (solvername=="E" ){
-           cout<< "The solver used is Euler "<<endl;
-         }
-         else if (solvername=="CN" ){
-            cout<< "The solver used is Crank Nicolson"<<endl;
-         }
-         else if (solvername=="DF" ){
-            cout<< "The solver used is DuFort Frankel"<<endl;
-         }
-         else if (solvername=="FE" ){
-            cout<< "The solver used is FEM"<<endl;
-         }
-         else{
-            cout << "Wrong input solver, default Backforward Euler will be used" << endl;
-            solvername="BE";
-         }
-        cout<<"if you wish to use other solvers, use key words: "<<'\n';
-        cout<<"E for Euler"<<'\n';
-        cout<<"BE for Backward Euler"<<'\n';
-        cout<<"CN for Crank Nicolson"<<'\n';
-        cout<<"DF for DuFort Frankel "<<'\n';
-        cout<<"as the third command line input.  "<<'\n';
-        cout<<"The second command line input stands for filename"<<endl;
 /*
  read the mesh information
  from the input file
@@ -65,13 +24,14 @@ int main(int argc, char* argv[]) {
 // variables that define a numerical scheme
 // grid is the space discretization
 // h is the time step,T is the total time,k is the space step
+  string filename,solvername;
   vector<double> grid;
   double k,h,T;
 
-  read_input(filename,grid,h,k,T);
-
- cout<<"k,h,T are "<<k<<" "<<h<<" "<<T<<endl;
- cout<<"the total number of grids are "<<grid.size()<<endl;
+  read_input("parameters",filename,solvername, grid,h,k,T);
+  cout<<"filename and solvername is "<<filename<<" "<<solvername<<" "<<endl;
+  cout<<"k,h,T are "<<k<<" "<<h<<" "<<T<<endl;
+  cout<<"the total number of grids are "<<grid.size()<<endl;
 
 
 /*
