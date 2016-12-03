@@ -10,7 +10,7 @@
 using namespace std;
 const double PI = 3.141592653589793238463;
 
-void read_input(string filename, string solvername, vector<double>& grids, double& h_space, double& k_time, double& T_end) {
+void read_input(string filename, string& solvername, vector<double>& grids, double& h_space, double& k_time, double& T_end) {
 	/*
 	for the demo code, instead of read the requied information form file,
 	we used a standard test input for 1D sample
