@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include<iostream>
 #include<fstream>
 #include <string>
@@ -27,8 +26,8 @@ void read_input(string input_filename, string& filename, string& solvername, vec
 	///////////////////// read in parameter.txt file
 	string filename_full;
 	ifstream myReadFile;
-	filename_full = "./QT/" + input_filename + ".txt";
-	myReadFile.open(filename_full);
+	filename_full =  input_filename + ".txt";
+	myReadFile.open(filename_full.c_str());
 	char output[100];
 	if (myReadFile.is_open()) {
 		int ii = 0;

@@ -26,7 +26,8 @@ int main(int argc, char* argv[]) {
 // h is the time step,T is the total time,k is the space step
   string filename,solvername,inputfile;
   vector<double> grid;
-  double k,h,T,dimension;
+  double k,h,T;
+  int dimension;
   inputfile="parameters";
 
 
@@ -35,7 +36,7 @@ int main(int argc, char* argv[]) {
   cout<<"k,h,T are "<<k<<" "<<h<<" "<<T<<endl;
   cout<<"the total number of grids are "<<grid.size()<<endl;
 
-  if(dimesion==1){
+  if(dimension==1){
 
 /*
  solve the heat equation ut=uxx
