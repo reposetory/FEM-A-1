@@ -13,12 +13,499 @@ const double PI = 3.141592653589793238463;
 
 
 
+//boundary conditions
+
+//2D initial condition u(x,y,0) = 1 + sin(xy)+sin(10xy);
+void initial_boundary_2D(MatrixXd& u_ini, vector<double> grid) {
+	int ngrids = grid.size();
+	for (int i = 0; i < ngrids; i++)
+		for (int j = 0; j < ngrids; j++)
+			u_ini(i, j) = 1 + sin(grid[i] * grid[j]) + sin(10 * grid[i] * grid[j]);
+}
+//2D boundary conditions
+void boundary_1d_1_2D(MatrixXd& u_ini, vector<double> grid, double delta = 0.0) {
+	int ngrids = grid.size();
+	for (int i = 0; i < ngrids; i++)
+		for (int j = 0; j < ngrids; j++)
+			u_ini(i, j) = 1 + sin(grid[i] * grid[j]) + sin(10 * grid[i] * grid[j]) + delta;
+}
 
 
-// 2d boundaryy condition defination
-void boundary_2d_1(vector<double>& u_ini,vector<double> grid,double delta=0.0){
+
+//
+void solver_back_euler_2D(MatrixXd &u, MatrixXd u_ini, vector<double> grid, double k, double h, double T) {
+
+	int n_step = grid.size();
+	int n_time = T / k;
+	int m, num_row;
+	double sigma = k / (h*h);
+	MatrixXd Q_factor = MatrixXd::Zero(n_step*n_step, n_step*n_step);
+	MatrixXd u_t(n_step*n_step, 1), u_tau(n_step*n_step, 1);
+
+	// set the initial value of u(x)
+	m = 0;
+	for (int i = 0; i < n_step; i++) {
+		for (int j = 0; j < n_step; j++) {
+			u_t(m, 0) = u_ini(i,j);
+			m++;
+		}
+	}
+	//  cout<<"the u_ini is "<<'\n'<<u_t<<endl;
+	// use the numerical scheme for the heat equation up to time T
+	cout << "k,h" << k << " " << h << endl;
+	cout << "step,time" << n_step << " " << n_time << endl;
+		// generate the numerical operator matrix Q_factor
+		for (int i = 0; i < n_step; i++) {
+			for (int j = 0; j < n_step; j++) {
+				if (i == 0 && j == 0) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row + 1) = - sigma;
+					Q_factor(num_row, n_step - 1) = -sigma;
+					Q_factor(num_row, n_step) = -sigma;
+					Q_factor(num_row, n_step*(n_step - 1)) = -sigma;
+				}
+				else if (i == n_step - 1 && j == 0) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row - 1) = -sigma;
+					Q_factor(num_row, 0) = -sigma;
+					Q_factor(num_row, num_row + n_step) = -sigma;
+					Q_factor(num_row, num_row + n_step*(n_step - 1)) = -sigma;
+				}
+				else if (i == 0 && j == n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row + 1) = -sigma;
+					Q_factor(num_row, n_step -1 + n_step *(n_step-1)) = -sigma;
+					Q_factor(num_row, 0) = -sigma;
+					Q_factor(num_row, n_step*(n_step-2)) = -sigma;
+				}
+				else if (i == n_step - 1 && j == n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, n_step*(n_step-1)) = -sigma;
+					Q_factor(num_row, num_row - 1) = -sigma;
+					Q_factor(num_row, n_step - 1) = -sigma;
+					Q_factor(num_row, (n_step -1) + n_step*(n_step - 2)) = -sigma;
+				}
+				else if (j == 0) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = k + j*n_step;
+						Q_factor(num_row, num_row - 1) = -sigma;
+						Q_factor(num_row, num_row + 1) = -sigma;
+						Q_factor(num_row, num_row + n_step) = -sigma;
+						Q_factor(num_row, num_row + n_step * (n_step - 1)) = -sigma;
+					}
+				}
+				else if (j == n_step - 1) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = k + j*n_step;
+						Q_factor(num_row, num_row - 1) = -sigma;
+						Q_factor(num_row, num_row + 1) = -sigma;
+						Q_factor(num_row, num_row - n_step) = -sigma;
+						Q_factor(num_row, k) = -sigma;
+					}
+				}
+				else if (i == 0) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = i + k*n_step;
+						Q_factor(num_row, num_row + (n_step - 1)) = -sigma;
+						Q_factor(num_row, num_row + 1) = -sigma;
+						Q_factor(num_row, num_row + n_step) = -sigma;
+						Q_factor(num_row, num_row - n_step) = -sigma;
+					}
+				}
+				else if (i == n_step -1) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = i + k*n_step;
+						Q_factor(num_row, num_row - (n_step - 1)) = -sigma;
+						Q_factor(num_row, num_row - 1) = -sigma;
+						Q_factor(num_row, num_row + n_step) = -sigma;
+						Q_factor(num_row, num_row - n_step) = -sigma;
+					}
+				}
+				else if(i > 0 && i < n_step -1 && j > 0 && j < n_step -1){
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row + 1) = -sigma;
+					Q_factor(num_row, num_row - 1) = -sigma;
+					Q_factor(num_row, num_row + n_step) = -sigma;
+					Q_factor(num_row, num_row - n_step) = -sigma;
+				}
+				num_row = i + j*n_step;
+				Q_factor(num_row, num_row) = 1.0 + 4.0*sigma;
+			}
+		}
+	// solve the equation Q_factor*u_tau=u_t
+	// use the linear solve in Eigen class
+	ColPivHouseholderQR< MatrixXd> dec(Q_factor);
+	for (int n = 0; n<n_time; n++) {
+		u_tau = dec.solve(u_t);
+		// store the result in u
+		m = 0;
+		for (int i = 0; i < n_step; i++) {
+			for (int j = 0; j < n_step; j++) {
+				u(n, m) = u_tau(m);
+				m++;
+			}
+		}
+		// prepare for the next iteration
+		u_t = u_tau;
+	}
+}
+
+void solver_euler_2D(MatrixXd& u, MatrixXd u_ini, vector<double> grid, double k, double h, double T) {
+
+	int n_step = grid.size(), m;
+	int n_time = T / k;
+	//cout << "n_step= " << n_step << ' ' << "n_time= " << n_time << endl;
+	//MatrixXd Q_factor( n_step, n_step);
+	MatrixXd u_t(n_step, n_step), u_tau(n_step, n_step);
+	//cout << "size of u is " << u.rows() << ' ' << u.cols() << endl;
+	// set the initial value of u(x)
+	u_t = u_ini;
+	//for (int i = 0; i<n_step; i++) {
+		//u_t(i, 0) = u_ini[i];
+	//}
+
+	// use the numerical scheme for the heat equation up to time T
+	for (int n = 0; n < n_time; n++)
+	{
+		//cout << '\n' << "time: " << n << '\n';
+
+		// using euler method to update u_tau
+		for (int i = 0; i < n_step; i++)
+		{
+			for (int j = 0; j < n_step; j++) {
+				if (i == 0 && j == 0) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(i + 1, j) - 2 * u_t(i, j) + u_t(n_step - 1, j) + u_t(i, j + 1) - 2 * u_t(i, j) + u_t(i, n_step - 1));
+				}
+				else if (i == n_step - 1 && j == n_step - 1) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(0, j) - 2 * u_t(i, j) + u_t(i - 1, j) + u_t(i, 0) - 2 * u_t(i, j) + u_t(i, j - 1));
+				}
+				else if (i == 0 && j == n_step - 1) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(i + 1, j) - 2 * u_t(i, j) + u_t(n_step - 1, j) + u_t(i, 0) - 2 * u_t(i, j) + u_t(i, j - 1));
+				}
+				else if (i == n_step - 1 && j == 0) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(0, j) - 2 * u_t(i, j) + u_t(i - 1, j) + u_t(i, j + 1) - 2 * u_t(i, j) + u_t(i, n_step - 1));
+				}
+				else if (i == 0 && j > 0 && j < n_step - 1) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(i + 1, j) - 2 * u_t(i, j) + u_t(n_step - 1, j) + u_t(i, j + 1) - 2 * u_t(i, j) + u_t(i, j - 1));
+				}
+				else if (i == n_step - 1 && j > 0 && j < n_step - 1) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(0, j) - 2 * u_t(i, j) + u_t(i - 1, j) + u_t(i, j + 1) - 2 * u_t(i, j) + u_t(i, j - 1));
+				}
+				else if (i > 0 && i < n_step - 1 && j == 0) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(i + 1, j) - 2 * u_t(i, j) + u_t(i - 1, j) + u_t(i, j + 1) - 2 * u_t(i, j) + u_t(i, n_step - 1));
+				}
+				else if (i > 0 && i < n_step - 1 && j == n_step - 1) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(i + 1, j) - 2 * u_t(i, j) + u_t(i - 1, j) + u_t(i, 0) - 2 * u_t(i, j) + u_t(i, j - 1));
+				}
+				else if (i > 0 && i < n_step - 1 && j>0 && j < n_step - 1) {
+					u_tau(i, j) = u_t(i, j) + (k / (h*h))*(u_t(i + 1, j) - 2 * u_t(i, j) + u_t(i - 1, j) + u_t(i, j + 1) - 2 * u_t(i, j) + u_t(i, j - 1));
+				}
+			}
+		}
+		// store the result in the big matrix u
+		m = 0;
+		//cout << '\n' << "time: " << n << '\n';
+		for (int p = 0; p < n_step; p++)
+		{
+			//cout << '\n'<<"row = " << p << '\n';
+			for (int q = 0; q < n_step; q++)
+			{
+				u(n, m) = u_tau(p, q);
+				m++;
+				//cout << u_tau(p,q) << ' ';
+			}
+		}
+		// prepare for the next iteration
+		u_t = u_tau;
+	}
+}
 
 
+void solver_crank_nicolson_2D(MatrixXd &u, MatrixXd u_ini, vector<double> grid, double k, double h, double T){
+
+	int n_step = grid.size();
+	int n_time = T / k;
+	int m, num_row;
+	double sigma = k / (h*h)/2.0;
+	MatrixXd Q_factor = MatrixXd::Zero(n_step*n_step, n_step*n_step);
+	MatrixXd Q_factor_B = MatrixXd::Zero(n_step*n_step, n_step*n_step);
+	MatrixXd u_t(n_step*n_step, 1), u_tau(n_step*n_step, 1);
+
+	// set the initial value of u(x)
+	m = 0;
+	for (int i = 0; i < n_step; i++) {
+		for (int j = 0; j < n_step; j++) {
+			u_t(m, 0) = u_ini(i, j);
+			m++;
+		}
+	}
+	//  cout<<"the u_ini is "<<'\n'<<u_t<<endl;
+	// use the numerical scheme for the heat equation up to time T
+	cout << "k,h" << k << " " << h << endl;
+	cout << "step,time" << n_step << " " << n_time << endl;
+		// generate the numerical operator matrix Q_factor
+		for (int i = 0; i < n_step; i++) {
+			for (int j = 0; j < n_step; j++) {
+				if (i == 0 && j == 0) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row + 1) = -sigma;
+					Q_factor(num_row, n_step - 1) = -sigma;
+					Q_factor(num_row, n_step) = -sigma;
+					Q_factor(num_row, n_step*(n_step - 1)) = -sigma;
+				}
+				else if (i == n_step - 1 && j == 0) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row - 1) = -sigma;
+					Q_factor(num_row, 0) = -sigma;
+					Q_factor(num_row, num_row + n_step) = -sigma;
+					Q_factor(num_row, num_row + n_step*(n_step - 1)) = -sigma;
+				}
+				else if (i == 0 && j == n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row + 1) = -sigma;
+					Q_factor(num_row, n_step - 1 + n_step *(n_step - 1)) = -sigma;
+					Q_factor(num_row, 0) = -sigma;
+					Q_factor(num_row, n_step*(n_step - 2)) = -sigma;
+				}
+				else if (i == n_step - 1 && j == n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, n_step*(n_step - 1)) = -sigma;
+					Q_factor(num_row, num_row - 1) = -sigma;
+					Q_factor(num_row, n_step - 1) = -sigma;
+					Q_factor(num_row, (n_step - 1) + n_step*(n_step - 2)) = -sigma;
+				}
+				else if (j == 0) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = k + j*n_step;
+						Q_factor(num_row, num_row - 1) = -sigma;
+						Q_factor(num_row, num_row + 1) = -sigma;
+						Q_factor(num_row, num_row + n_step) = -sigma;
+						Q_factor(num_row, num_row + n_step * (n_step - 1)) = -sigma;
+					}
+				}
+				else if (j == n_step - 1) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = k + j*n_step;
+						Q_factor(num_row, num_row - 1) = -sigma;
+						Q_factor(num_row, num_row + 1) = -sigma;
+						Q_factor(num_row, num_row - n_step) = -sigma;
+						Q_factor(num_row, k) = -sigma;
+					}
+				}
+				else if (i == 0) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = i + k*n_step;
+						Q_factor(num_row, num_row + (n_step - 1)) = -sigma;
+						Q_factor(num_row, num_row + 1) = -sigma;
+						Q_factor(num_row, num_row + n_step) = -sigma;
+						Q_factor(num_row, num_row - n_step) = -sigma;
+					}
+				}
+				else if (i == n_step - 1) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = i + k*n_step;
+						Q_factor(num_row, num_row - (n_step - 1)) = -sigma;
+						Q_factor(num_row, num_row - 1) = -sigma;
+						Q_factor(num_row, num_row + n_step) = -sigma;
+						Q_factor(num_row, num_row - n_step) = -sigma;
+					}
+				}
+				else if (i > 0 && i < n_step - 1 && j > 0 && j < n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor(num_row, num_row + 1) = -sigma;
+					Q_factor(num_row, num_row - 1) = -sigma;
+					Q_factor(num_row, num_row + n_step) = -sigma;
+					Q_factor(num_row, num_row - n_step) = -sigma;
+				}
+				num_row = i + j*n_step;
+				Q_factor(num_row, num_row) = 1.0 + 4.0*sigma;
+			}
+		}
+
+		sigma = -1.0*sigma;
+			// generate the numerical operator matrix Q_factor
+		for (int i = 0; i < n_step; i++) {
+			for (int j = 0; j < n_step; j++) {
+				if (i == 0 && j == 0) {
+					num_row = i + j*n_step;
+					Q_factor_B(num_row, num_row + 1) = -sigma;
+					Q_factor_B(num_row, n_step - 1) = -sigma;
+					Q_factor_B(num_row, n_step) = -sigma;
+					Q_factor_B(num_row, n_step*(n_step - 1)) = -sigma;
+				}
+				else if (i == n_step - 1 && j == 0) {
+					num_row = i + j*n_step;
+					Q_factor_B(num_row, num_row - 1) = -sigma;
+					Q_factor_B(num_row, 0) = -sigma;
+					Q_factor_B(num_row, num_row + n_step) = -sigma;
+					Q_factor_B(num_row, num_row + n_step*(n_step - 1)) = -sigma;
+				}
+				else if (i == 0 && j == n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor_B(num_row, num_row + 1) = -sigma;
+					Q_factor_B(num_row, n_step - 1 + n_step *(n_step - 1)) = -sigma;
+					Q_factor_B(num_row, 0) = -sigma;
+					Q_factor_B(num_row, n_step*(n_step - 2)) = -sigma;
+				}
+				else if (i == n_step - 1 && j == n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor_B(num_row, n_step*(n_step - 1)) = -sigma;
+					Q_factor_B(num_row, num_row - 1) = -sigma;
+					Q_factor_B(num_row, n_step - 1) = -sigma;
+					Q_factor_B(num_row, (n_step - 1) + n_step*(n_step - 2)) = -sigma;
+				}
+				else if (j == 0) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = k + j*n_step;
+						Q_factor_B(num_row, num_row - 1) = -sigma;
+						Q_factor_B(num_row, num_row + 1) = -sigma;
+						Q_factor_B(num_row, num_row + n_step) = -sigma;
+						Q_factor_B(num_row, num_row + n_step * (n_step - 1)) = -sigma;
+					}
+				}
+				else if (j == n_step - 1) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = k + j*n_step;
+						Q_factor_B(num_row, num_row - 1) = -sigma;
+						Q_factor_B(num_row, num_row + 1) = -sigma;
+						Q_factor_B(num_row, num_row - n_step) = -sigma;
+						Q_factor_B(num_row, k) = -sigma;
+					}
+				}
+				else if (i == 0) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = i + k*n_step;
+						Q_factor_B(num_row, num_row + (n_step - 1)) = -sigma;
+						Q_factor_B(num_row, num_row + 1) = -sigma;
+						Q_factor_B(num_row, num_row + n_step) = -sigma;
+						Q_factor_B(num_row, num_row - n_step) = -sigma;
+					}
+				}
+				else if (i == n_step - 1) {
+					for (int k = 1; k < n_step - 1; k++) {
+						num_row = i + k*n_step;
+						Q_factor_B(num_row, num_row - (n_step - 1)) = -sigma;
+						Q_factor_B(num_row, num_row - 1) = -sigma;
+						Q_factor_B(num_row, num_row + n_step) = -sigma;
+						Q_factor_B(num_row, num_row - n_step) = -sigma;
+					}
+				}
+				else if (i > 0 && i < n_step - 1 && j > 0 && j < n_step - 1) {
+					num_row = i + j*n_step;
+					Q_factor_B(num_row, num_row + 1) = -sigma;
+					Q_factor_B(num_row, num_row - 1) = -sigma;
+					Q_factor_B(num_row, num_row + n_step) = -sigma;
+					Q_factor_B(num_row, num_row - n_step) = -sigma;
+				}
+				num_row = i + j*n_step;
+				Q_factor_B(num_row, num_row) = 1.0 + 4.0*sigma;
+			}
+		}
+
+
+			// solve the equation Q_factor*u_tau=u_t
+			// use the linear solve in Eigen class
+			ColPivHouseholderQR< MatrixXd> dec(Q_factor);
+			for (int n = 0; n < n_time; n++) {
+				u_tau = dec.solve(Q_factor_B*u_t);
+				//      cout<<"the new u_tau is "<<'\n'<<u_tau<<endl;
+
+				// store the result in u
+				m = 0;
+				for (int i = 0; i < n_step; i++)
+				{
+					for (int j = 0; j < n_step; j++) {
+						u(n, m) = u_tau(m);
+						m++;
+					}
+				}
+				// prepare for the next iteration
+				u_t = u_tau;
+			}
+	//cout << "size of the Q_factor: " << Q_factor.rows() << ' ' << "x" << Q_factor.cols() << endl;
+	//cout << "sigma: " << sigma << endl;
+	//for (int i = 0; i < n_step*n_step; i++) {
+	//for (int j = 0; j < n_step*n_step; j++) {
+	//cout << Q_factor(i, j) << ' ';
+	//}
+	//cout << '\n';
+	//}
+}
+
+
+
+void solver_DuFort_Frankel_2D(MatrixXd &u, MatrixXd u_ini, vector<double> grid, double k, double h, double T) {
+
+
+	int n_step = grid.size(), m;
+	int n_time = T / k;
+	double sigma = k / (h*h);
+	//cout << "n_step= " << n_step << ' ' << "n_time= " << n_time << endl;
+	//MatrixXd Q_factor( n_step, n_step);
+	MatrixXd u_t(n_step, n_step), u_tau(n_step, n_step), u_pre(n_step, n_step);
+	//cout << "size of u is " << u.rows() << ' ' << u.cols() << endl;
+	// set the initial value of u(x)
+	u_t = u_ini;
+	u_pre = u_ini;
+	//for (int i = 0; i<n_step; i++) {
+		//u_t(i, 0) = u_ini[i];
+		//u_pre(i, 0) = u_ini[i];
+	//}
+
+	// use the numerical scheme for the heat equation up to time T
+	for (int n = 0; n < n_time; n++)
+	{
+		// using DuFort_Frankel to update u_tau
+		for (int i = 0; i < n_step; i++)
+		{
+			for (int j = 0; j < n_step; j++) {
+				if (i ==0 && j == 0) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(i + 1,j) + u_t(n_step - 1,j) + u_t(i,j + 1) + u_t(i,n_step -1)) + (1.0 - 4.0*sigma)*u_pre(i,j));
+				}
+				else if (i == n_step-1 && j == n_step - 1) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(0, j) + u_t(i - 1, j) + u_t(i, 0) + u_t(i, j - 1)) + (1.0 - 4.0*sigma) * u_pre(i, j));
+				}
+				else if (i == 0 && j == n_step - 1) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(i + 1, j) + u_t(n_step - 1, j) + u_t(i, 0) + u_t(i, j - 1)) + (1.0 - 4.0*sigma) * u_pre(i, j));
+				}
+				else if (i == n_step - 1 && j == 0) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(0, j) + u_t(i - 1, j) + u_t(i, j + 1) + u_t(i, n_step - 1)) + (1.0 - 4.0*sigma) * u_pre(i, j));
+				}
+				else if (i == 0 && j > 0 && j < n_step - 1) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(i + 1, j) + u_t(n_step - 1, j) + u_t(i, j + 1) + u_t(i, j - 1)) + (1.0 - 4.0*sigma) * u_pre(i, j));
+				}
+				else if (i == n_step - 1 && j > 0 && j < n_step - 1) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(0, j) + u_t(i - 1, j) + u_t(i, j + 1) + u_t(i, j - 1)) + (1.0 - 4.0*sigma) * u_pre(i, j));
+				}
+				else if (i > 0 && i < n_step - 1 && j == 0) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(i + 1, j) + u_t(i - 1, j) + u_t(i, j + 1) + u_t(i, n_step - 1)) + (1.0 - 4.0*sigma) *u_pre(i, j));
+				}
+				else if (i > 0 && i < n_step - 1 && j == n_step - 1) {
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(i + 1, j) + u_t(i - 1, j) + u_t(i, 0) + u_t(i, j - 1)) + (1.0 - 4.0*sigma) * u_pre(i, j));
+				}
+				else if(i > 0 && i < n_step - 1 && j>0 && j < n_step - 1)
+				{
+					u_tau(i, j) = (1.0 / (1.0 + 4.0*sigma))*(2.0*sigma*(u_t(i + 1, j) + u_t(i - 1, j) + u_t(i, j + 1) + u_t(i, j - 1)) + (1.0 - 4.0*sigma) * u_pre(i, j));
+				}
+			}
+		}
+		// store the result in the big matrix u
+		m = 0;
+		//cout << '\n' << "time: " << n << '\n';
+		for (int p = 0; p < n_step; p++)
+		{
+			//cout << '\n'<<"row = " << p << '\n';
+			for (int q = 0; q < n_step; q++)
+			{
+				u(n, m) = u_tau(p, q);
+				m++;
+				//cout << u_tau(p,q) << ' ';
+			}
+		}
+		// prepare for the next iteration
+		u_pre = u_t;
+		u_t = u_tau;
+	}
 
 }
 
