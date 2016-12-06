@@ -78,7 +78,7 @@ meeting 4:30 at bh lobby
 
 
 *************************************************************
-Dec 8 Thur #5
+Dec 9   Fri #5
 *************************************************************
 [make 2D versions of everything]
 
@@ -89,11 +89,15 @@ Dec 8 Thur #5
 -[helena] write 2d convergence/stability checker
 -[helena] print function for 2D
 -[helena]link main function with gnuplot
+-[yunxing]test the 2d algorithm with smaller h and k
+-[]add multithreads in all the explicit algorithm
 -[yunxing]link main function with qt
--[]print multiple plots for algorithm
--[]print multiple plots for convergence(plot the files ended with minus, plus, original in same window)
--[yunxing]default values for qt
-
+-[zhi]print multiple plots for algorithm
+-[helena]print multiple plots for convergence(plot the files ended with minus, plus, original in same window)
+-[qtyunxing]default values for qt
+-[yunxing]after the main function, reopen qt for next input
+-[qt]add some drop down buttons for algorithm
+-[]add compiling instruction
 -[] verify all 2D parts work on ccv
 -[] add 2D defaults for algorithms, input, mesh
 -[] fix loose ends
@@ -102,6 +106,7 @@ Dec 8 Thur #5
 
 -[]add comments/ formatting codes
 
+8:30
 
 
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
