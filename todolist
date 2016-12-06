@@ -67,15 +67,12 @@ Dec 6 Tues #4
 *************************************************************
 [make 2D versions of everything]
 
--[yunxing] write 2D euler
--[yunxing] write 2d backward euler
--[yunxing] write 2d crank nicholson
--[yunxing] write 2d DuFort_Frankel
--[zhi] 2d fem
--[helena] write 2d convergence/stability checker
--[zhi] add multithreads to 1D stability check
--[yunxing] Qt allows 2D support(JUST add y)
--[helena] make automatic visualization to plot in 2D()
+-[x] write 2D euler
+-[x] write 2d backward euler
+-[x] write 2d crank nicholson
+-[x] write 2d DuFort_Frankel
+-[x] Qt allows 2D support(JUST add y)
+-[x] make automatic visualization to plot in 2D()
 
 meeting 4:30 at bh lobby
 
@@ -85,17 +82,25 @@ Dec 8 Thur #5
 *************************************************************
 [make 2D versions of everything]
 
+-[zhi] 2d fem (some bugs)
+-[zhi] add multithreads to 1D stability check
+-[zhi] add multithreads to 2D stability check
+-[zhi] add multithreads to FEM algorithm
+-[helena] write 2d convergence/stability checker
+-[helena] print function for 2D
+-[helena]link main function with gnuplot
+-[yunxing]link main function with qt
+-[]print multiple plots for algorithm
+-[]print multiple plots for convergence(plot the files ended with minus, plus, original in same window)
+-[yunxing]default values for qt
+
 -[] verify all 2D parts work on ccv
 -[] add 2D defaults for algorithms, input, mesh
--[] add built-in test cases for 2D
 -[] fix loose ends
 -[] write updates (check if there is an UPDATE REPORT #3)
 -[] put updates together, proofread, submit
 
-
-
-
-
+-[]add comments/ formatting codes
 
 
 
