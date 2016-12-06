@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <algorithm.h> //This is the library that contains the implementation of different numerical algorithm
-#include <algorithm2D.h>
 #include <vector>
 #include <Eigen/Dense>
 #include <convergence.h>
@@ -38,10 +37,7 @@ int main(int argc, char* argv[]) {
   cout<<"the total number of grids are "<<grid.size()<<endl;
 
   if(dimension==1){
-
-/*
- solve the heat equation ut=uxx
- */
+ //solve the heat equation ut=uxx
 
 //for one-dimensional demo; assume 2pi periodic,
 //initial condition is u(,0)=sin(x)+sin(10x)
@@ -53,9 +49,7 @@ int main(int argc, char* argv[]) {
 
 // solve the 1D heat equation with the given parameters
 
-
   MatrixXd u(ntime,ngrids);
-
 
 //use different solver
   if (solvername=="BE" ) {
@@ -80,20 +74,66 @@ int main(int argc, char* argv[]) {
 /*
  save the solution to a data file
  */
-       print_output(filename,solvername,grid,u_ini,u,h,k,T);
+  /*
+    print_output(filename,solvername,grid,u_ini,u,h,k,T);
+
 
     // convergence and stability
       differences_1d(filename, solvername,u,u_ini,grid,k, h, T);
       string boundaryname;
       boundaryname="1d_1";
-      stability_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
+      convergence_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T
+	  */
     }
     else if(dimension==2){
-    MatrixXd u_ini;
-    MatrixXd grid;
-    solver_FEM_2D(u_ini,  grid,  k,  h,  T);
+		//solve the heat equation ut=uxx of 2D
+        // assume 2pi periodic,
+		//initial condition is u(,0)=sin(xy)+sin(10xy)
+		int ngrids, ntime;
+		ngrids = grid.size();
+		ntime = T / k;
+		MatrixXd u_ini(ngrids, ngrids);
+		initial_boundary_2D(u_ini, grid);
 
+		// solve the 1D heat equation with the given parameters
 
+		MatrixXd u(ntime, ngrids*ngrids);
+
+		//use different solver
+		if (solvername == "E") {
+			solver_euler_2D(u, u_ini, grid, k, h, T);
+		}
+		else if (solvername == "BE") {
+			solver_back_euler_2D(u, u_ini, grid, k, h, T);
+		}
+		
+		else if (solvername == "CN") {
+			solver_crank_nicolson_2D(u, u_ini, grid, k, h, T);
+		}
+		
+		else if (solvername == "DF") {
+			solver_DuFort_Frankel_2D(u, u_ini, grid, k, h, T);
+		}
+		/*
+		else if (solvername == "FE") {
+			solver_FEM_2D(u, u_ini, grid, k, h, T);
+		}*/
+		else {
+			cout << "No solver for the input" << endl;
+		}
+
+		/*
+		save the solution to a data file
+		*/
+		print_output_2D(filename, solvername, grid, u_ini, u, h, k, T);
+
+		/*
+		// convergence and stability
+		differences_1d(filename, solvername, u, u_ini, grid, k, h, T);
+		string boundaryname;
+		boundaryname = "1d_1";
+		convergence_1d(filename, solvername, boundaryname, u_ini, grid, k, h, T);
+		*/
     }
 
 
