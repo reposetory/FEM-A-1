@@ -350,7 +350,9 @@ for (int i=0;i<(n_step-1);i++){
     // store the result in the big matrix u
       for (int j=0;j< n_step;j++){
           u(i,j)=u_tau(j);
+          cout<<u(i,j)<<" ";
       }
+      cout<<endl;
     // prepare for the next iteration
     u_t=u_tau;
 

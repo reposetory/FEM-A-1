@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm.h> //This is the library that contains the implementation of different numerical algorithm
+#include <algorithm2D.h>
 #include <vector>
 #include <Eigen/Dense>
 #include <convergence.h>
@@ -88,6 +89,10 @@ int main(int argc, char* argv[]) {
       stability_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
     }
     else if(dimension==2){
+    MatrixXd u_ini;
+    MatrixXd grid;
+    solver_FEM_2D(u_ini,  grid,  k,  h,  T);
+
 
     }
 
