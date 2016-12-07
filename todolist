@@ -73,7 +73,7 @@ Dec 6 Tues #4
 -[x] write 2d DuFort_Frankel
 -[x] Qt allows 2D support(JUST add y)
 -[x] make automatic visualization to plot in 2D()
-
+-[x] 2d fem
 meeting 4:30 at bh lobby
 
 
@@ -82,22 +82,24 @@ Dec 9   Fri #5
 *************************************************************
 [make 2D versions of everything]
 
--[zhi] 2d fem (some bugs)
 -[zhi] add multithreads to 1D stability check
 -[zhi] add multithreads to 2D stability check
 -[zhi] add multithreads to FEM algorithm
--[zhi]add euler algorithm for 3D
+-[zhi] add euler algorithm for 3D
+-[zhi] print multiple plots for algorithm
+
 -[helena] write 2d convergence/stability checker
 -[helena] print function for 2D
 -[helena]link main function with gnuplot
+-[helena]print multiple plots for convergence(plot the files ended with minus, plus, original in same window)
+-[helena]plot function for 3D
+
 -[yunxing]test the 2d algorithm with smaller h and k
 -[yunxing]link main function with qt
--[zhi]print multiple plots for algorithm
--[helena]print multiple plots for convergence(plot the files ended with minus, plus, original in same window)
--[helena]plot 3D
--[qtyunxing]default values for qt
+-[yunxing]default values for qt
 -[yunxing]after the main function, reopen qt for next input
 -[yunxing]add some drop down buttons for algorithm
+
 -[]add multithreads in all the explicit algorithm
 -[]add compiling instruction
 -[] verify all 2D parts work on ccv
