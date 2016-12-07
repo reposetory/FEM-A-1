@@ -16,7 +16,7 @@ void initial_boundary_2D(MatrixXd& u_ini, vector<double> grid);
 void boundary_1d_1_2D(vector<double>& u_ini, vector<double> grid, double delta = 0.0);
 
 //2D FEM algorithm
-void solver_FEM_2D(MatrixXd u_ini, MatrixXd grid, double k, double h, double T);
+void solver_FEM_2D(MatrixXd &u,MatrixXd u_ini, MatrixXd grid, double k, double h, double T);
 
 
 //2D back_euler algorithm

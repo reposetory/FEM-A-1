@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm.h> //This is the library that contains the implementation of different numerical algorithm
+#include <algorithm2D.h>
 #include <vector>
 #include <Eigen/Dense>
 #include <convergence.h>
@@ -13,8 +14,6 @@ using namespace std;
 
 
 int main(int argc, char* argv[]) {
-
-
 
 /*
  read the mesh information
@@ -49,7 +48,7 @@ int main(int argc, char* argv[]) {
 
 // solve the 1D heat equation with the given parameters
 
-  MatrixXd u(ntime,ngrids);
+  MatrixXd u=MatrixXd::Zero(ntime,ngrids);
 
 //use different solver
   if (solvername=="BE" ) {
@@ -74,16 +73,15 @@ int main(int argc, char* argv[]) {
 /*
  save the solution to a data file
  */
-  /*
-    print_output(filename,solvername,grid,u_ini,u,h,k,T);
 
+    print_output(filename,solvername,grid,u_ini,u,h,k,T);
 
     // convergence and stability
       differences_1d(filename, solvername,u,u_ini,grid,k, h, T);
       string boundaryname;
       boundaryname="1d_1";
-      convergence_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T
-	  */
+      stability_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
+
     }
     else if(dimension==2){
 		//solve the heat equation ut=uxx of 2D
@@ -97,7 +95,7 @@ int main(int argc, char* argv[]) {
 
 		// solve the 1D heat equation with the given parameters
 
-		MatrixXd u(ntime, ngrids*ngrids);
+		MatrixXd u=MatrixXd::Zero(ntime, ngrids*ngrids);
 
 		//use different solver
 		if (solvername == "E") {
@@ -106,18 +104,19 @@ int main(int argc, char* argv[]) {
 		else if (solvername == "BE") {
 			solver_back_euler_2D(u, u_ini, grid, k, h, T);
 		}
-		
+
 		else if (solvername == "CN") {
 			solver_crank_nicolson_2D(u, u_ini, grid, k, h, T);
 		}
-		
+
 		else if (solvername == "DF") {
 			solver_DuFort_Frankel_2D(u, u_ini, grid, k, h, T);
 		}
-		/*
+
 		else if (solvername == "FE") {
-			solver_FEM_2D(u, u_ini, grid, k, h, T);
-		}*/
+      MatrixXd   grid_fem = MatrixXd::Zero(2,ngrids*ngrids);
+			solver_FEM_2D(u, u_ini,grid_fem , k, h, T);
+		}
 		else {
 			cout << "No solver for the input" << endl;
 		}

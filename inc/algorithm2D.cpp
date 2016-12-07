@@ -510,16 +510,6 @@ void solver_DuFort_Frankel_2D(MatrixXd &u, MatrixXd u_ini, vector<double> grid, 
 }
 
 
-
-
-
-
-
-
-
-
-
-
 //2D FEM algorithm
 //************************************************************//
 //local stiffness matrix
@@ -548,10 +538,10 @@ void calculate_ele_stiff_2d(MatrixXd &B_ele,MatrixXd &A_ele,MatrixXd x){
                    double g1,g2,h1,h2,dg1,dg2,dh1,dh2;
                    MatrixXd f=MatrixXd::Zero(4,1),df=MatrixXd::Zero(4,2);
 
-                          g1 = 0.5*(1.0 - xi(1,i));
-                          g2 = 0.5*(1.0+ xi(1,i));
-                          h1 = 0.5*(1.0- xi(2,i));
-                          h2 = 0.5*(1.0 + xi(2,i));
+                          g1 = 0.5*(1.0 - xi(0,i));
+                          g2 = 0.5*(1.0+ xi(0,i));
+                          h1 = 0.5*(1.0- xi(1,i));
+                          h2 = 0.5*(1.0 + xi(1,i));
                           f(0) = g1*h1;
                           f(1) = g2*h1;
                           f(2) = g2*h2;
@@ -594,15 +584,13 @@ void calculate_ele_stiff_2d(MatrixXd &B_ele,MatrixXd &A_ele,MatrixXd x){
 
 
 
- void solver_FEM_2D(MatrixXd u_ini, MatrixXd grid, double k, double h, double T){
+ void solver_FEM_2D(MatrixXd &u,MatrixXd u_ini, MatrixXd grid, double k, double h, double T){
 
    int nx,ny,node_all;
-   nx=1+(2.0*PI)/h;
-   ny=1+(2.0*PI)/h;
+   nx=u_ini.rows();
+   ny=u_ini.cols();
    node_all=nx*ny;
-
    // for 2-D case create the element connectivity
-
    MatrixXd element_set=MatrixXd::Zero((nx-1)*(ny-1),4);
    int ele_all=0;
 
@@ -616,37 +604,29 @@ void calculate_ele_stiff_2d(MatrixXd &B_ele,MatrixXd &A_ele,MatrixXd x){
      }
    }
 
+// check the element is assembled correctly
    if (ele_all != (nx-1)*(ny-1) ){
      cout<<"there is something wrong with element connectivity!"<<endl;
    }
 
- //create a local 2*node_all matrix contains all node coordinates
-   MatrixXd grid_coord=MatrixXd::Zero(2,node_all);
+ //create a local node_all*2 matrix contains all node coordinates
+   MatrixXd grid_coord=MatrixXd::Zero(node_all,2);
    for (int i=0;i<(nx);i++){
      for(int j=0;j<(ny);j++){
-        grid_coord(i+j*nx,0)=double(i)*h;
-        grid_coord(i+j*nx,1)=double(j)*h;
-
+        grid_coord(i+j*nx,0)=i*h;
+        grid_coord(i+j*nx,1)=j*h;
      }
    }
 
-  //
+  //read the initial boundary into the form could be used in FEM solver
 
+ 	MatrixXd u_ini_fem(node_all,1);
 
-//for debug purpose creat a simple initial condition
-
- MatrixXd u_ini_debug(node_all,1);
-
- for(int i=0;i<node_all;i++){
-
-u_ini(i)=sin(grid_coord(i,0)*grid_coord(i,1));
-
- }
-
-
-
-
-  //
+ 	for (int i=0;i<(nx);i++){
+	 	for(int j=0;j<(ny);j++){
+				u_ini_fem(i+j*nx)=u_ini(i,j);
+	 	}
+ 	}
 
    //assemble the local element to global coordinate
    //*************************************************//
@@ -657,16 +637,18 @@ u_ini(i)=sin(grid_coord(i,0)*grid_coord(i,1));
    MatrixXd x=MatrixXd::Zero( 2, 4);//the coordinates of element points
    int global_x,global_y;
 
-   for (int i=0;i<(ele_all-1);i++){
+   for (int i=0;i<(ele_all);i++){
 
       //get the coordinates for nodes in the element
        for(int j=0;j<4;j++){
          x(0,j)=grid_coord(element_set(i,j),0);
          x(1,j)=grid_coord(element_set(i,j),1);
        }
+
+			//  cout<<"block1"<<endl;
        //get local stiffness
        calculate_ele_stiff_2d(B_ele,A_ele,x);
-
+    //   cout<<"block2"<<endl;
        //assmble the local stiffness matrix to global coordinates
        for (int j=0;j<4;j++){
          for(int k=0;k<4;k++){
@@ -685,19 +667,18 @@ u_ini(i)=sin(grid_coord(i,0)*grid_coord(i,1));
 //*************************************************************************//
 
    // solve the heat equation with back ward euler in time integration
+
        int n_time;
        n_time=T/k;
-       MatrixXd u_t(node_all,1),u_tau( node_all,1);
-// a big matrix that stores the results in each time step
-       MatrixXd u=MatrixXd::Zero(n_time,node_all);
+       MatrixXd u_t(node_all,1),u_tau(node_all,1);
 
-       u_t=u_ini_debug;
+       u_t=u_ini_fem;
+			 ColPivHouseholderQR< MatrixXd> dec(B+k*A);
 
        for(int i=0;i<n_time;i++){
 
          // solve the equation (B+k*A)*u_tau=B*u_t
            // use the linear solve in Eigen class
-           ColPivHouseholderQR< MatrixXd> dec(B+k*A);
            u_tau=dec.solve(B*u_t);
 
 

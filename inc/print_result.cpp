@@ -46,3 +46,58 @@ writefile.close();
 
 
 }
+
+
+
+
+void print_output_2D(string filename,string solvername,vector<double> grids, MatrixXd u_ini,MatrixXd u,double h_space,double k_time,double T_end){
+/*
+save the result to a file
+*/
+ofstream writefile;
+string fullname;
+fullname=filename+"_"+solvername+".dat";
+writefile.open (fullname.c_str() , ios::out);
+writefile<<"This is the output for 1D heat equation"<<endl;
+writefile << "Parameters:" << '\n' << "sovername: " << solvername << '\n' << "space step: " << h_space << '\n' << "time step: " << k_time << '\n' << "total time: " << T_end << '\n'<<endl;
+
+int n_step=grids.size();
+int n_time=T_end/k_time;
+
+writefile<<"grid points "<<'\n';
+
+for (int j = n_step - 1; j >= 0; j--) {
+	for (int i = 0; i < n_step; i++) {
+		writefile << grids[i] << " ";
+		//cout << "grids= "<<grids[i] << ' ';
+	}
+	writefile << '\n';
+}
+
+writefile<<'\n';
+writefile<<"Time 0"<<'\n';
+for (int j = n_step - 1; j >= 0; j--) {
+	for (int i = 0; i < n_step; i++) {
+		writefile << u_ini(i,j) << " ";
+	}
+  writefile <<'\n';
+}
+writefile<<'\n';
+writefile <<'\n';
+
+for(int n=0;n<n_time;n++){
+	int m = 0;
+    writefile<<"Time "<<double(n+1)*k_time<<'\n';
+	for (int i = 0; i < n_step; i++) {
+		for (int j = 0; j < n_step; j++) {
+			writefile << u(n, m) << " ";
+			m++;
+		}
+		writefile << '\n';
+	}
+	writefile << '\n';
+}
+writefile.close();
+
+
+}

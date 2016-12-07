@@ -46,44 +46,31 @@ void solver_back_euler_1D(MatrixXd& u,vector<double> u_ini,vector<double> grid,d
    }
  //  cout<<"the u_ini is "<<'\n'<<u_t<<endl;
 // use the numerical scheme for the heat equation up to time T
-  cout<<"k,h"<<k<<" "<<h<<endl;
-  cout<<"step,time"<<n_step<<" "<<n_time<<endl;
-   for(int i=0;i<n_time;i++){
 
-       // generate the numerical operator matrix Q_factor
-       for(int j=0;j<n_step;j++){
-            Q_factor(j,j)=1.0+2.0*k/(h*h);
-            if(j==0){
-                Q_factor(j,j+1)=-k/(h*h);
-                Q_factor(j,n_step-1)=-k/(h*h);
-            }
-            else if(j==n_step-1){
-                Q_factor(j,j-1)=-k/(h*h);
-                Q_factor(j,0)=-k/(h*h);
-            }
-            else{
-                Q_factor(j,j+1)=-k/(h*h);
-                Q_factor(j,j-1)=-k/(h*h);
-            }
-       }
+
+  // generate the numerical operator matrix Q_factor
+    for(int j=0;j<n_step;j++){
+        Q_factor(j,j)=1.0+2.0*k/(h*h);
+        if(j==0){
+            Q_factor(j,j+1)=-k/(h*h);
+            Q_factor(j,n_step-1)=-k/(h*h);
+          }
+          else if(j==n_step-1){
+            Q_factor(j,j-1)=-k/(h*h);
+            Q_factor(j,0)=-k/(h*h);
+          }
+          else{
+            Q_factor(j,j+1)=-k/(h*h);
+            Q_factor(j,j-1)=-k/(h*h);
+          }
+        }
+  //decomposition of the  Q matrix
+   ColPivHouseholderQR< MatrixXd> dec(Q_factor);
+   for(int i=0;i<n_time;i++){
 
  // solve the equation Q_factor*u_tau=u_t
    // use the linear solve in Eigen class
-/*
-   for(int j=0;j<n_step;j++){
-        for (int k=0;k<n_step;k++){
-          cout<<Q_factor(j,k);
-        }
-        cout<<'\n';
-   }
-   for(int j=0;j<n_step;j++){
 
-          cout<<u_t(j);
-
-   }
-
-   */
-       ColPivHouseholderQR< MatrixXd> dec(Q_factor);
        u_tau=dec.solve(u_t);
  //      cout<<"the new u_tau is "<<'\n'<<u_tau<<endl;
 
@@ -163,46 +150,51 @@ void solver_crank_nicolson_1D(MatrixXd &u,vector<double> u_ini,vector<double> gr
       u_t(i,0)=u_ini[i];
   }
 
+
+  // generate the numerical operator matrix Q_factor_left
+        for(int j=0;j<n_step;j++){
+             Q_factor_left(j,j)=1.0+k/(h*h);
+             if(j==0){
+                 Q_factor_left(j,j+1)=-0.5*k/(h*h);
+                 Q_factor_left(j,n_step-1)=-0.5*k/(h*h);
+             }
+             else if(j==n_step-1){
+                 Q_factor_left(j,j-1)=-0.5*k/(h*h);
+                 Q_factor_left(j,0)=-0.5*k/(h*h);
+             }
+             else{
+                 Q_factor_left(j,j+1)=-0.5*k/(h*h);
+                 Q_factor_left(j,j-1)=-0.5*k/(h*h);
+             }
+        }
+
+// generate the numerical operator matrix Q_factor_right
+      for(int j=0;j<n_step;j++){
+          Q_factor_right (j,j)=1.0-k/(h*h);
+          if(j==0){
+             Q_factor_right(j,j+1)=0.5*k/(h*h);
+             Q_factor_right(j,n_step-1)=0.5*k/(h*h);
+          }
+         else if(j==n_step-1){
+             Q_factor_right(j,j-1)=0.5*k/(h*h);
+             Q_factor_right(j,0)=0.5*k/(h*h);
+         }
+         else{
+             Q_factor_right(j,j+1)=0.5*k/(h*h);
+             Q_factor_right(j,j-1)=0.5*k/(h*h);
+             }
+      }
+
+
+  ColPivHouseholderQR< MatrixXd> dec(Q_factor_left);
+
 // use the numerical scheme for the heat equation up to time T
   for(int i=0;i<n_time;i++){
 
-      // generate the numerical operator matrix Q_factor_left
-      for(int j=0;j<n_step;j++){
-           Q_factor_left(j,j)=1.0+k/(h*h);
-           if(j==0){
-               Q_factor_left(j,j+1)=-0.5*k/(h*h);
-               Q_factor_left(j,n_step-1)=-0.5*k/(h*h);
-           }
-           else if(j==n_step-1){
-               Q_factor_left(j,j-1)=-0.5*k/(h*h);
-               Q_factor_left(j,0)=-0.5*k/(h*h);
-           }
-           else{
-               Q_factor_left(j,j+1)=-0.5*k/(h*h);
-               Q_factor_left(j,j-1)=-0.5*k/(h*h);
-           }
-      }
-
-      // generate the numerical operator matrix Q_factor_right
-      for(int j=0;j<n_step;j++){
-           Q_factor_right (j,j)=1.0-k/(h*h);
-           if(j==0){
-               Q_factor_right(j,j+1)=0.5*k/(h*h);
-               Q_factor_right(j,n_step-1)=0.5*k/(h*h);
-           }
-           else if(j==n_step-1){
-               Q_factor_right(j,j-1)=0.5*k/(h*h);
-               Q_factor_right(j,0)=0.5*k/(h*h);
-           }
-           else{
-               Q_factor_right(j,j+1)=0.5*k/(h*h);
-               Q_factor_right(j,j-1)=0.5*k/(h*h);
-           }
-      }
 
 // solve the equation Q_factor_left*u_tau=Q_factor_right*u_t
   // use the linear solve in Eigen class
-      ColPivHouseholderQR< MatrixXd> dec(Q_factor_left);
+
       u_tau=dec.solve(Q_factor_right*u_t);
 
 
