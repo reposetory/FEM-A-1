@@ -52,8 +52,8 @@ void solver_back_euler_2D(MatrixXd &u, MatrixXd u_ini, vector<double> grid, doub
 	}
 	//  cout<<"the u_ini is "<<'\n'<<u_t<<endl;
 	// use the numerical scheme for the heat equation up to time T
-	cout << "k,h" << k << " " << h << endl;
-	cout << "step,time" << n_step << " " << n_time << endl;
+//	cout << "k,h" << k << " " << h << endl;
+//	cout << "step,time" << n_step << " " << n_time << endl;
 		// generate the numerical operator matrix Q_factor
 		for (int i = 0; i < n_step; i++) {
 			for (int j = 0; j < n_step; j++) {
@@ -134,9 +134,11 @@ void solver_back_euler_2D(MatrixXd &u, MatrixXd u_ini, vector<double> grid, doub
 		}
 	// solve the equation Q_factor*u_tau=u_t
 	// use the linear solve in Eigen class
-	ColPivHouseholderQR< MatrixXd> dec(Q_factor);
+//	ColPivHouseholderQR< MatrixXd> dec(Q_factor);
 	for (int n = 0; n<n_time; n++) {
-		u_tau = dec.solve(u_t);
+//		u_tau = dec.solve(u_t);
+
+        u_tau= Q_factor.lu().solve(u_t);
 		// store the result in u
 		m = 0;
 		for (int i = 0; i < n_step; i++) {

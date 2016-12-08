@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm.h> //This is the library that contains the implementation of different numerical algorithm
 #include <algorithm2D.h>
+#include <algorithm3D.h>
 #include <vector>
 #include <Eigen/Dense>
 #include <convergence.h>
@@ -134,7 +135,45 @@ int main(int argc, char* argv[]) {
 		convergence_1d(filename, solvername, boundaryname, u_ini, grid, k, h, T);
 		*/
     }
+  else if(dimension==3){
 
+    int ngrids, ntime,node_total;
+		ngrids = grid.size();
+    node_total=ngrids*ngrids*ngrids;
+		ntime = T / k;
+		MatrixXd u_ini= MatrixXd::Zero(node_total,1);
+    MatrixXd grid_3d= MatrixXd::Zero(node_total,3);
+    MatrixXd u=MatrixXd::Zero(ntime, node_total);
+
+    //apply initial boundary to 3D problem
+    initial_boundary_3D(u_ini, grid_3d,grid,ngrids);
+    //solver 3D with back_euler scheme
+    solver_back_euler_3D(u,u_ini,grid_3d,  k,  h,  T, ngrids);
+
+
+
+   /*
+    this is only a templorary print function for testing purpose, feel free to change it
+
+    grid_3d is a (totalnode)*3 matrix, the rows represent points, the first column is x axis (from 0 to 2pi). the second column is y axis(from 0 to 2pi), and the third is for z
+
+    u_ini is a totalnode*1 matrix, it store the initial heat information, the node sequence is the same as grid_3d, that is the same row represent the same point
+
+    u is a totaltime*totalnode matrix, the rows represent each time step, the columns represent the heat at each point, the node sequence is also the same as grid_3d, that is j columns
+    in u represent the same node as j rows in grid_3d
+
+    h is grid length, x y z takes the same value of h
+    k is time step length
+   T is the target computational time 
+   */
+		print_output_3D(filename, solvername,grid_3d, u_ini, u, h, k, T);
+
+
+
+
+
+
+  }
 
     return 0;
 

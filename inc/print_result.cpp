@@ -58,7 +58,7 @@ ofstream writefile;
 string fullname;
 fullname=filename+"_"+solvername+".dat";
 writefile.open (fullname.c_str() , ios::out);
-writefile<<"This is the output for 1D heat equation"<<endl;
+writefile<<"This is the output for 3D heat equation"<<endl;
 writefile << "Parameters:" << '\n' << "sovername: " << solvername << '\n' << "space step: " << h_space << '\n' << "time step: " << k_time << '\n' << "total time: " << T_end << '\n'<<endl;
 
 int n_step=grids.size();
@@ -97,6 +97,50 @@ for(int n=0;n<n_time;n++){
 	}
 	writefile << '\n';
 }
+writefile.close();
+
+
+}
+
+
+
+void print_output_3D(string filename,string solvername,MatrixXd grid_3d, MatrixXd u_ini,MatrixXd u,double h_space,double k_time,double T_end){
+/*
+save the result to a file
+*/
+ofstream writefile;
+string fullname;
+fullname=filename+"_"+solvername+".dat";
+writefile.open (fullname.c_str() , ios::out);
+writefile<<"This is the output for 3D heat equation"<<endl;
+writefile << "Parameters:" << '\n' << "sovername: " << solvername << '\n' << "space step: " << h_space << '\n' << "time step: " << k_time << '\n' << "total time: " << T_end << '\n'<<endl;
+
+int n_step=grid_3d.rows();
+int n_time=T_end/k_time;
+
+writefile<<"grid points "<<'\n';
+
+for(int i=0;i<3;i++){
+  for (int j =0;j<n_step;j++) {
+		writefile << grid_3d(j,i) << " ";
+  }
+  writefile << '\n';
+}
+
+writefile<<"Time 0"<<'\n';
+for (int j =0;j<n_step;j++) {
+  writefile << u_ini(j) << " ";
+}
+writefile << '\n';
+
+for(int n=0;n<n_time;n++){
+  writefile<<"Time "<<double(n+1)*k_time<<'\n';
+  for (int j =0;j<n_step;j++) {
+    writefile << u(n,j) << " ";
+  }
+  writefile << '\n';
+}
+
 writefile.close();
 
 
