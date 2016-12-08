@@ -110,7 +110,7 @@ save the result to a file
 */
 ofstream writefile;
 string fullname;
-fullname=filename+"_"+solvername+".dat";
+fullname=filename+"_"+solvername+"_3D"+".dat";
 writefile.open (fullname.c_str() , ios::out);
 writefile<<"This is the output for 3D heat equation"<<endl;
 writefile << "Parameters:" << '\n' << "sovername: " << solvername << '\n' << "space step: " << h_space << '\n' << "time step: " << k_time << '\n' << "total time: " << T_end << '\n'<<endl;
