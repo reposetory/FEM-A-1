@@ -1,0 +1,8 @@
+ module load gcc
+ module load mpich
+ module load cmake
+ module load qt
+ module load gnuplot
+ module load eigen
+
+
