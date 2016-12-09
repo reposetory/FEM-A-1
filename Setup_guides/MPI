@@ -1,6 +1,7 @@
 how to run a task with multithread
 **********************************
-
+First, load mpi module:
+module load mpich
 
 CMakeList.txt has already been updated to enable MPI. The compiling process is the same as before.
 
