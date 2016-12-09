@@ -1,0 +1,13 @@
+how to run a task with multithread
+**********************************
+
+
+CMakeList.txt has already been updated to enable MPI. The compiling process is the same as before.
+
+when you run the job
+
+instead of ./JOBNAME
+
+use mpirun -n NUMBER_OF_THREADS ./JOBNAME
+
+a bash script "run.sh" has been created to submit jobs that takes large computational time
