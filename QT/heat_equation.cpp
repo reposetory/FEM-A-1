@@ -19,28 +19,49 @@ heat_equation::~heat_equation()
 
 void heat_equation::on_goButton_clicked()
 {
-    QString dimension = ui->dimension->text();
     QTextStream out(stdout);
-    out<<dimension<<endl;
-    QString num_scheme = ui->num_scheme->text();
-    out<<num_scheme<<endl;
+    QString dimension = ui->comboBox_dim->currentText();
+    out<<"dimension out: "<<dimension<<endl;
+
+    QString num_scheme = ui->comboBox_num_scheme->currentText();
+    out<<"numerical scheme: "<<num_scheme<<endl;
     QString time_step = ui->time_step->text();
     out<<time_step<<endl;
     QString space_step = ui->space_step->text();
     out<<space_step<<endl;
+    //QString space_step_y = ui->space_step_y->text();
+    //out<<space_step_y<<endl;
     QString total_time = ui->total_time->text();
     out<<total_time<<endl;
     QString output_file_name = ui->output_file_name->text();
     out<<output_file_name<<endl;
-   //save a txt file containing the input parameters into lucal folder 
-    QString filename="./parameters.txt";
+
+    QString filename="C:\\Users\\Daegyoum\\Documents\\test4_Qt\\parameters.txt";
     QFile file( filename );
     if ( file.open(QIODevice::ReadWrite) )
     {
         QTextStream stream( &file );
-        stream << dimension <<' '<<num_scheme<<' '<<time_step<<' '<<space_step<<' '<<total_time<<' '<<output_file_name<< endl;
-        out<<output_file_name<<endl;
+        stream << dimension<<' '<<num_scheme<<' '<<time_step<<' '<<space_step<<' '<<total_time<<' '<<output_file_name<< endl;
+        //stream << dimension <<' '<<num_scheme<<' '<<time_step<<' '<<space_step_x<<' '<<space_step_y<<' '<<total_time<<' '<<output_file_name<< endl;
+        //out<<output_file_name<<endl;
     }
 
+}
+
+void heat_equation::on_comboBox_dim_activated(const QString &arg1)
+{
+    //QTextStream out(stdout);
+    //out<<"dimension: "<<arg1<<endl;
+    if(arg1 =="3"){
+        ui->comboBox_num_scheme->addItem("Euler");
+    }
+    else if(arg1 == "1" || arg1 == "2"){
+        ui->comboBox_num_scheme->addItem("Euler");
+        ui->comboBox_num_scheme->addItem("Backward-Euler");
+        ui->comboBox_num_scheme->addItem("Crank-Nicolson");
+        ui->comboBox_num_scheme->addItem("DuFort-Frankel");
+        ui->comboBox_num_scheme->addItem("Finite-Element");
+    }
 
 }
+

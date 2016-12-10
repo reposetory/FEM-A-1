@@ -18,6 +18,10 @@ public:
 private slots:
     void on_goButton_clicked();
 
+
+    void on_comboBox_dim_activated(const QString &arg1);
+
+
 private:
     Ui::heat_equation *ui;
 };
