@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'heat_equation.h'
 **
-** Created: Wed Nov 30 18:07:36 2016
+** Created: Sat Dec 10 15:06:50 2016
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_heat_equation[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,12 +32,14 @@ static const uint qt_meta_data_heat_equation[] = {
 
  // slots: signature, parameters, type, tag, flags
       15,   14,   14,   14, 0x08,
+      42,   37,   14,   14, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_heat_equation[] = {
     "heat_equation\0\0on_goButton_clicked()\0"
+    "arg1\0on_comboBox_dim_activated(QString)\0"
 };
 
 void heat_equation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -47,10 +49,10 @@ void heat_equation::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         heat_equation *_t = static_cast<heat_equation *>(_o);
         switch (_id) {
         case 0: _t->on_goButton_clicked(); break;
+        case 1: _t->on_comboBox_dim_activated((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObjectExtraData heat_equation::staticMetaObjectExtraData = {
@@ -85,9 +87,9 @@ int heat_equation::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

@@ -18,7 +18,7 @@ using namespace std;
 // output from this function is a ".dat" file ended with "_difference" that records the difference between the current time steo and previous time step
 // there will be a screen output that says whether the algorithm is converge or not
 // in this function, the total time used is a fixed large number(10) instead of the user inputs
-void differences_1d(string outputfilename,string solvername,MatrixXd &u,vector<double> u_ini,vector<double>  grid,double k,double h,double T);
+void differences_1d(int argc, char* argv[],string outputfilename,string solvername,MatrixXd &u,vector<double> u_ini,vector<double>  grid,double k,double h,double T);
         //output u - u_ini per point per time step for plotting to turn into a video to show if plot flattens over time
         //print out yes/no
 

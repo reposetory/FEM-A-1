@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Request an hour of runtime:
-#SBATCH -t 1:00:00
+#SBATCH -t 00:10:00
 
 #SBATCH --partition=batch
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=3
 #SBATCH --constraint="e5-2670"
 
 # start time
@@ -20,13 +20,18 @@ T_START=$(date +%s)
 # Run a command
 module load mpich
 module load gcc
+module load qt
 
 cd QT
+qmake -project
+qmake
+make
 ./QT
-cp parameters.txt ../ 
+
 
 cd ..
-mpirun -n 1 ./main
+mpirun -n 3 ./main
+#./main
 
 
 # end time
