@@ -110,6 +110,8 @@ void stability_1d(int argc, char* argv[],string outputfilename,string solvername
   int num_procs =MPI::COMM_WORLD.Get_size();
   int rank =MPI::COMM_WORLD.Get_rank();
 
+  cout<<"the current thread is "<<rank<<" out of "<<num_procs<<endl;
+
   if (boundaryname=="1d_1"){
     boundary_1d_1(u_ini_plus,grid,delta);
     boundary_1d_1(u_ini_minus,grid,-delta);
@@ -193,8 +195,8 @@ void stability_1d(int argc, char* argv[],string outputfilename,string solvername
           print_output( outputfilename,caselabel,grid, u_ini_minus, u_delta_minus, h,k,T);
           std::cout<<" from process"<<rank<<"of"<<num_procs<<'\n';
 
-    }
 
+    }
 
   }
   else if(num_procs>2){

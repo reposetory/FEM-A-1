@@ -16,7 +16,7 @@ void read_input(int argc, char* argv[],string input_filename, string& filename, 
 	int num_procs =MPI::COMM_WORLD.Get_size();
 	int rank =MPI::COMM_WORLD.Get_rank();
 
-  if(rank ==0){
+
 		int dim;
 		double h, k, T;
 		string num_scheme1, num_scheme, output_filename;
@@ -69,9 +69,9 @@ void read_input(int argc, char* argv[],string input_filename, string& filename, 
 		num_scheme = "FE";
 	}
 
-
+  if(rank ==0){
 		cout <<"the input parameters are: "<< '\n'<<"dimension of the problem: "<<dim << '\n' << "numerical scheme: "<<num_scheme << '\n' <<"time step size: "<< k << '\n'<<"space step size: " << h << '\n'<<"total time: " << T << '\n'<<"output file name: " << output_filename << endl;
-
+	}
 		h_space = h;
 		k_time = k;
 		T_end = T;
@@ -84,6 +84,5 @@ void read_input(int argc, char* argv[],string input_filename, string& filename, 
 			//      cout<<grids[i]<<endl;
 		}
 
-	}
 
 }
