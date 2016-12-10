@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Request an hour of runtime:
-#SBATCH -t 00:10:00
+#SBATCH -t 00:5:00
 
 #SBATCH --partition=batch
 #SBATCH --ntasks-per-node=3
@@ -28,9 +28,10 @@ qmake
 make
 ./QT
 
-
+threads=$(<num_threads.txt)
+echo "$threads"
 cd ..
-mpirun -n 3 ./main
+mpirun -n $threads ./main
 #./main
 
 
