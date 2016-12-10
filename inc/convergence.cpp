@@ -127,6 +127,7 @@ void stability_1d(int argc, char* argv[],string outputfilename,string solvername
       // print the result for the original solution
        caselabel=solvername+"_original";
       print_output(outputfilename, caselabel, grid,u_ini,u_original_solution, h, k, T);
+      std::cout<<" from process"<<rank<<"of"<<num_procs<<'\n';
 
   }
 
@@ -180,6 +181,7 @@ void stability_1d(int argc, char* argv[],string outputfilename,string solvername
           //print the result with ini-delta
           caselabel=solvername+"_minus";
           print_output( outputfilename,caselabel,grid, u_ini_minus, u_delta_minus, h,k,T);
+          std::cout<<" from process"<<rank<<"of"<<num_procs<<'\n';
 
     }
 
@@ -216,6 +218,7 @@ void stability_1d(int argc, char* argv[],string outputfilename,string solvername
 
         caselabel=solvername+"_plus";
         print_output( outputfilename, caselabel,grid,u_ini_plus, u_delta_plus, h, k, T);
+        std::cout<<" from process"<<rank<<"of"<<num_procs<<'\n';
 
     }
     if(rank==2){
@@ -248,6 +251,7 @@ void stability_1d(int argc, char* argv[],string outputfilename,string solvername
         //print the result with ini-delta
         caselabel=solvername+"_minus";
         print_output( outputfilename,caselabel,grid, u_ini_minus, u_delta_minus, h,k,T);
+        std::cout<<" from process"<<rank<<"of"<<num_procs<<'\n';
     }
 
 
@@ -300,6 +304,7 @@ void stability_1d(int argc, char* argv[],string outputfilename,string solvername
         //print the result with ini-delta
         caselabel=solvername+"_minus";
         print_output( outputfilename,caselabel,grid, u_ini_minus, u_delta_minus, h,k,T);
+        std::cout<<" from process"<<rank<<"of"<<num_procs<<'\n';
 
   }
 
