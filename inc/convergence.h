@@ -26,6 +26,6 @@ void differences_1d(string outputfilename,string solvername,MatrixXd &u,vector<d
 // for stability test
 // output from this file is three ".dat" files ended with "_plus" "_minus" and "_original" that record the solutios with  u_ini, u_ini+delta, u_ini-delta as initial condition.
 // post-process requires plot the three ".dat" file in one figure to show whether a small disturb will have a significant effect on the solution
-void stability_1d(string outputfilename,string solvername,string boundaryname,vector<double> u_ini,vector<double> grid,double k,double h,double T,double delta=10e-7);
+void stability_1d(int argc, char* argv[],string outputfilename,string solvername,string boundaryname,vector<double> u_ini,vector<double> grid,double k,double h,double T,double delta=10e-7);
 
 #endif

@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
       differences_1d(filename, solvername,u,u_ini,grid,k, h, T);
       string boundaryname;
       boundaryname="1d_1";
-      stability_1d(filename, solvername, boundaryname,u_ini,grid, k,h, T);
+      stability_1d(argc,  argv,filename, solvername, boundaryname,u_ini,grid, k,h, T);
 
     }
     else if(dimension==2){
@@ -164,7 +164,7 @@ int main(int argc, char* argv[]) {
 
     h is grid length, x y z takes the same value of h
     k is time step length
-   T is the target computational time 
+   T is the target computational time
    */
 		print_output_3D(filename, solvername,grid_3d, u_ini, u, h, k, T);
 
