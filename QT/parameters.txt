@@ -1,1 +1,2 @@
-1 Backward-Euler 0.1 0.4 1 file_out 
+1 Backward-Euler 1 1 1 file_out 
+ut 

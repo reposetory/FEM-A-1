@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.2.2)
 project(FEM)
 
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ")
-
+SET(CMAKE_CXX_FLAGS "-std=c++0x") 
 INCLUDE_DIRECTORIES ( "/gpfs/runtime/opt/eigen/3.2.1/include/eigen3" )
 
 add_library(FEM

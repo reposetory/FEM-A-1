@@ -1,0 +1,21 @@
+
+
+# ccv temp files
+*.out
+
+# makefile temp files
+CMakeFiles/
+CMakeCache.txt 
+cmake_install.cmake 
+Makefile
+main
+.modules
+
+# vim temp files  
+*~
+.*.swp
+.*.swo
+
+# output temp files 
+
+ 
