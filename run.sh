@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Request an hour of runtime:
-#SBATCH -t 00:5:00
+#SBATCH -t 00:30:00
 
 #SBATCH --partition=batch
 #SBATCH --ntasks-per-node=3
+#SBATCH --mem-per-cpu=10G 
 #SBATCH --constraint="e5-2670"
 
 # start time

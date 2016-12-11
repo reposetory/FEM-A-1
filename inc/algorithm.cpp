@@ -65,13 +65,13 @@ void solver_back_euler_1D(MatrixXd& u,vector<double> u_ini,vector<double> grid,d
           }
         }
   //decomposition of the  Q matrix
-   ColPivHouseholderQR< MatrixXd> dec(Q_factor);
+//   ColPivHouseholderQR< MatrixXd> dec(Q_factor);
    for(int i=0;i<n_time;i++){
 
  // solve the equation Q_factor*u_tau=u_t
    // use the linear solve in Eigen class
-
-       u_tau=dec.solve(u_t);
+       u_tau= Q_factor.lu().solve(u_t);
+      // u_tau=dec.solve(u_t);
  //      cout<<"the new u_tau is "<<'\n'<<u_tau<<endl;
 
        // store the result in u
@@ -186,7 +186,7 @@ void solver_crank_nicolson_1D(MatrixXd &u,vector<double> u_ini,vector<double> gr
       }
 
 
-  ColPivHouseholderQR< MatrixXd> dec(Q_factor_left);
+  //ColPivHouseholderQR< MatrixXd> dec(Q_factor_left);
 
 // use the numerical scheme for the heat equation up to time T
   for(int i=0;i<n_time;i++){
@@ -195,8 +195,8 @@ void solver_crank_nicolson_1D(MatrixXd &u,vector<double> u_ini,vector<double> gr
 // solve the equation Q_factor_left*u_tau=Q_factor_right*u_t
   // use the linear solve in Eigen class
 
-      u_tau=dec.solve(Q_factor_right*u_t);
-
+    //  u_tau=dec.solve(Q_factor_right*u_t);
+      u_tau=Q_factor_left.lu().solve(Q_factor_right*u_t);
 
       // store the result in u
       for (int j=0;j< n_step;j++){
@@ -326,7 +326,8 @@ for (int i=0;i<(n_step-1);i++){
   }
 
 // solve the heat equation with back ward euler in time integration
-    MatrixXd u_t(n_step,1),u_tau( n_step,1);
+    MatrixXd u_t(n_step,1),u_tau( n_step,1),Q_left=MatrixXd::Zero( n_step, n_step);
+    Q_left=B+k*A;
 
     for (int i=0;i<n_step;i++){
       u_t(i)=u_ini[i];
@@ -336,9 +337,9 @@ for (int i=0;i<(n_step-1);i++){
 
       // solve the equation (B+k*A)*u_tau=B*u_t
         // use the linear solve in Eigen class
-            ColPivHouseholderQR< MatrixXd> dec(B+k*A);
-            u_tau=dec.solve(B*u_t);
-
+        //    ColPivHouseholderQR< MatrixXd> dec(B+k*A);
+        //u_tau=dec.solve(B*u_t);
+      u_tau=Q_left.lu().solve(B*u_t);
     // store the result in the big matrix u
       for (int j=0;j< n_step;j++){
           u(i,j)=u_tau(j);

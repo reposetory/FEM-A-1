@@ -407,9 +407,11 @@ void solver_crank_nicolson_2D(MatrixXd &u, MatrixXd u_ini, vector<double> grid, 
 
 			// solve the equation Q_factor*u_tau=u_t
 			// use the linear solve in Eigen class
-			ColPivHouseholderQR< MatrixXd> dec(Q_factor);
+		//	ColPivHouseholderQR< MatrixXd> dec(Q_factor);
 			for (int n = 0; n < n_time; n++) {
-				u_tau = dec.solve(Q_factor_B*u_t);
+
+			  u_tau= Q_factor.lu().solve(Q_factor_B*u_t);
+			//	u_tau = dec.solve(Q_factor_B*u_t);
 				//      cout<<"the new u_tau is "<<'\n'<<u_tau<<endl;
 
 				// store the result in u
@@ -672,16 +674,16 @@ void calculate_ele_stiff_2d(MatrixXd &B_ele,MatrixXd &A_ele,MatrixXd x){
 
        int n_time;
        n_time=T/k;
-       MatrixXd u_t(node_all,1),u_tau(node_all,1);
+       MatrixXd u_t(node_all,1),u_tau(node_all,1),Q_left=MatrixXd::Zero( node_all, node_all);
 
        u_t=u_ini_fem;
-			 ColPivHouseholderQR< MatrixXd> dec(B+k*A);
-
+			// ColPivHouseholderQR< MatrixXd> dec(B+k*A);
+       Q_left=B+k*A;
        for(int i=0;i<n_time;i++){
 
          // solve the equation (B+k*A)*u_tau=B*u_t
            // use the linear solve in Eigen class
-           u_tau=dec.solve(B*u_t);
+            u_tau= Q_left.lu().solve(B*u_t);
 
 
        // store the result in the big matrix u
