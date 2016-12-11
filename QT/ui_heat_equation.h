@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'heat_equation.ui'
 **
-** Created: Sat Dec 10 15:06:45 2016
+** Created: Sat Dec 10 16:26:40 2016
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,6 +40,8 @@ public:
     QComboBox *comboBox_dim;
     QComboBox *comboBox_num_scheme;
     QLabel *label_8;
+    QLabel *label_9;
+    QLineEdit *num_threads;
 
     void setupUi(QWidget *heat_equation)
     {
@@ -72,13 +74,13 @@ public:
         total_time->setGeometry(QRect(180, 280, 121, 21));
         goButton = new QPushButton(heat_equation);
         goButton->setObjectName(QString::fromUtf8("goButton"));
-        goButton->setGeometry(QRect(200, 370, 81, 31));
+        goButton->setGeometry(QRect(200, 410, 81, 31));
         output_file_name = new QLineEdit(heat_equation);
         output_file_name->setObjectName(QString::fromUtf8("output_file_name"));
-        output_file_name->setGeometry(QRect(180, 320, 121, 21));
+        output_file_name->setGeometry(QRect(180, 360, 121, 21));
         label_7 = new QLabel(heat_equation);
         label_7->setObjectName(QString::fromUtf8("label_7"));
-        label_7->setGeometry(QRect(70, 320, 101, 21));
+        label_7->setGeometry(QRect(70, 360, 101, 21));
         comboBox_dim = new QComboBox(heat_equation);
         comboBox_dim->setObjectName(QString::fromUtf8("comboBox_dim"));
         comboBox_dim->setGeometry(QRect(180, 120, 121, 21));
@@ -88,6 +90,12 @@ public:
         label_8 = new QLabel(heat_equation);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(180, 80, 171, 20));
+        label_9 = new QLabel(heat_equation);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_9->setGeometry(QRect(70, 320, 101, 21));
+        num_threads = new QLineEdit(heat_equation);
+        num_threads->setObjectName(QString::fromUtf8("num_threads"));
+        num_threads->setGeometry(QRect(180, 320, 121, 21));
 
         retranslateUi(heat_equation);
         QObject::connect(goButton, SIGNAL(clicked()), heat_equation, SLOT(close()));
@@ -121,6 +129,8 @@ public:
          << QApplication::translate("heat_equation", "numerical method:", 0, QApplication::UnicodeUTF8)
         );
         label_8->setText(QApplication::translate("heat_equation", "INPUT PARAMETERS", 0, QApplication::UnicodeUTF8));
+        label_9->setText(QApplication::translate("heat_equation", "number of threads:", 0, QApplication::UnicodeUTF8));
+        num_threads->setText(QString());
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'heat_equation.h'
 **
-** Created: Sat Dec 10 15:06:50 2016
+** Created: Sat Dec 10 16:26:43 2016
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!

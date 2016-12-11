@@ -46,6 +46,19 @@ void heat_equation::on_goButton_clicked()
         //out<<output_file_name<<endl;
     }
 
+
+    QString num_threads = ui->num_threads->text();
+    QString filename1="./num_threads.txt";
+    QFile file1( filename1 );
+    if ( file1.open(QIODevice::ReadWrite) )
+    {
+        QTextStream stream( &file1);
+        stream <<num_threads<<' ';
+        //stream << dimension<<' '<<num_scheme<<' '<<time_step<<' '<<space_step<<' '<<total_time<<' '<<output_file_name<<' '<< endl;
+        //stream << dimension <<' '<<num_scheme<<' '<<time_step<<' '<<space_step_x<<' '<<space_step_y<<' '<<total_time<<' '<<output_file_name<< endl;
+        //out<<output_file_name<<endl;
+    }
+
 }
 
 void heat_equation::on_comboBox_dim_activated(const QString &arg1)
@@ -58,6 +71,7 @@ void heat_equation::on_comboBox_dim_activated(const QString &arg1)
         ui->time_step->setText("0.1");
         ui->space_step->setText("0.5");
         ui->total_time->setText("1");
+        ui->num_threads->setText("1");
         ui->output_file_name->setText("file_out");
     }
     else if(arg1 == "1" || arg1 == "2"){
@@ -70,6 +84,7 @@ void heat_equation::on_comboBox_dim_activated(const QString &arg1)
         ui->time_step->setText("0.1");
         ui->space_step->setText("0.4");
         ui->total_time->setText("1");
+        ui->num_threads->setText("1");
         ui->output_file_name->setText("file_out");
     }
 
