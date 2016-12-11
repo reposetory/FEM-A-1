@@ -13,14 +13,14 @@ void print_output(string filename,string solvername,vector<double> grids,vector<
 //save the result to a file
 int n_step=grids.size();
 int n_time=T_end/k_time;
-double timeat; 
+double timeat;
 ofstream writefile;
 string fullname;
 string path;
 std::ostringstream strs;
-path = "./output/" + solvername + "/"; 
-//fullname = "./output/" + solvername + "/" + filename + "_" + solvername + "_.dat";   
-fullname = "./output/out_" + filename + "_" + solvername + "_.dat";   
+path = "./output/" + solvername + "/";
+//fullname = "./output/" + solvername + "/" + filename + "_" + solvername + "_.dat";
+fullname = "./output/out_" + filename + "_" + solvername + "_.dat";
 writefile.open(fullname.c_str(), ios::out);
 
 for (int i = 0; i < n_time; i++){
@@ -29,10 +29,10 @@ for (int i = 0; i < n_time; i++){
 timeat = k_time*i;
 for(int j=0;j<n_step;j++){
   if(j == 0){
-    writefile << "-1 " << '\t' << timeat << " " << '\t' << '\n'; 
+    writefile << "-1 " << '\t' << timeat << " " << '\t' << '\n';
   }
     writefile << grids[j]<<" ";
-    writefile << '\t'; 
+    writefile << '\t';
     writefile << u(i,j) << " " << '\t';
 /*  if(j ==0){
     writefile << " " <<  timeat << " " << '\t';
@@ -43,11 +43,11 @@ for(int j=0;j<n_step;j++){
   writefile << '\n';
 
   if(j == n_step-1 && i != n_time-1){
-    writefile << '\n' << '\n';  
-  } 
+    writefile << '\n' << '\n';
+  }
 }
 }
-writefile.close();  
+writefile.close();
 }
 
 
@@ -57,14 +57,14 @@ writefile.close();
 void print_output_2D(string filename,string solvername,vector<double> grids, MatrixXd u_ini,MatrixXd u,double h_space,double k_time,double T_end){
 int n_step=grids.size();
 int n_time=T_end/k_time;
-double timeat; 
+double timeat;
 ofstream writefile;
 string fullname;
 string path;
 std::ostringstream strs;
-path = "./output/" + solvername + "/"; 
-//fullname = "./output/" + solvername + "/" + filename + "_.dat";   
-fullname = "./output/out_" + filename + "_" + solvername + "_.dat";   
+path = "./output/" + solvername + "/";
+//fullname = "./output/" + solvername + "/" + filename + "_.dat";
+fullname = "./output/out_" + filename + "_" + solvername + "2D_.dat";
 writefile.open(fullname.c_str(), ios::out);
 
 for (int i = 0; i < n_time; i++){
@@ -73,21 +73,21 @@ timeat = k_time*i;
     for(int k = 0; k < n_step; k++){
       if(j == 0){
         writefile << "-1 " << '\t' << timeat << " " << '\t' << "0 " << '\t'  << '\n';
-      } 
-    
+      }
+
       writefile << grids[j] << " " << '\t';
-      writefile << grids[k] << " " << '\t'; 
-      writefile << u(j,k) << " " << '\t';
+      writefile << grids[k] << " " << '\t';
+      writefile << u(i,j+k*n_time) << " " << '\t';
       writefile << '\n';
 
       if(j == n_step-1 && i != n_time-1){
-        writefile << '\n' << '\n';  
-      } 
+        writefile << '\n' << '\n';
+      }
 
     }
   }
 }
-writefile.close();  
+writefile.close();
 }
 
 
