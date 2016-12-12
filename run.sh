@@ -25,7 +25,7 @@ module load qt
 module load cmake
 module load gnuplot
 
-cmake CMakeList.txt
+cmake CMakeLists.txt
 make
 
 cd QT
