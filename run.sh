@@ -4,8 +4,8 @@
 #SBATCH -t 00:30:00
 
 #SBATCH --partition=batch
-#SBATCH --ntasks-per-node=3
-#SBATCH --mem-per-cpu=10G 
+#SBATCH --ntasks-per-node=6
+#SBATCH --mem-per-cpu=10G
 #SBATCH --constraint="e5-2670"
 
 # start time
@@ -22,6 +22,11 @@ T_START=$(date +%s)
 module load mpich
 module load gcc
 module load qt
+module load cmake
+module load gnuplot
+
+cmake CMakeList.txt
+make
 
 cd QT
 qmake -project
