@@ -78,9 +78,11 @@ timeat = k_time*i;
       writefile << grids[j] << " " << '\t';
       writefile << grids[k] << " " << '\t';
       writefile << u(i,j+k*n_time) << " " << '\t';
-      writefile << '\n';
 
-      if(j == n_step-1 && i != n_time-1){
+        writefile << '\n';
+
+
+      if(j == n_step-1 && k == n_step-1 && i != n_time-1){
         writefile << '\n' << '\n';
       }
 
