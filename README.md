@@ -1,5 +1,5 @@
-# engnfinal
-class project
+# ENGN 2912B Final Project
+class project FEM-A
 team members: Zhi Li Helena Liu YunXing Su
 
 ##Overview:
@@ -9,7 +9,7 @@ total time through QT's graphical user input interface.
 
 ##Build and Running instructions:
 
-All the build steps are executed automatically by the bash script "run.sh". To run this code, simply submit the job in CCV using  `sbatch run.sh` under visual mode settings, eg. x11 or VNC. We recommend using VNC. 
+All the build steps are executed automatically by the bash script "run.sh". To run this code, simply submit the job in CCV using  `sbatch run.sh` under visual mode settings, eg. x11 or VNC. We recommend using VNC. This code has been tested and verified to work on CCV through the VNC interface in all cases. 
 
 After the batch script passes queue, the QT interface should appear. Then, you can input the desired parameters through QT's interface. The program will automatically generate the output files. The output files include raw data in `.dat` files and animations in `.gif` files. The 1D data and visualization files are located in 
 `/directory/output/1Doutput`
@@ -19,6 +19,7 @@ The `.gif` files can be opened with an image viewer such as a web browser. On VN
 
 ##Manual Build Instructions: 
 In case the bash script doesn't work in VNC, the build steps are :
+
 1. Go to the main directory, `FEM-A` (if the name is not modified) and load requisite modules
 
     `module load gcc cmake mpich qt'
