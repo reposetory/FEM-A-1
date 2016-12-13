@@ -20,7 +20,7 @@ string path;
 std::ostringstream strs;
 path = "./output/" + solvername + "/";
 //fullname = "./output/" + solvername + "/" + filename + "_" + solvername + "_.dat";
-fullname = "./output/out_" + filename + "_" + solvername + "_.dat";
+fullname = "./output/1Doutput/out_" + filename + "_" + solvername + "_.dat";
 writefile.open(fullname.c_str(), ios::out);
 
 for (int i = 0; i < n_time; i++){
@@ -64,14 +64,14 @@ string path;
 std::ostringstream strs;
 path = "./output/" + solvername + "/";
 //fullname = "./output/" + solvername + "/" + filename + "_.dat";
-fullname = "./output/out_" + filename + "_" + solvername + "2D_.dat";
+fullname = "./output/2Doutput/out_" + filename + "_" + solvername + "2D_.dat";
 writefile.open(fullname.c_str(), ios::out);
 
 for (int i = 0; i < n_time; i++){
 timeat = k_time*i;
   for (int j = 0; j < n_step;j++){
     for(int k = 0; k < n_step; k++){
-      if(j == 0){
+      if(j == 0 && k == 0){
         writefile << "-1 " << '\t' << timeat << " " << '\t' << "0 " << '\t'  << '\n';
       }
 

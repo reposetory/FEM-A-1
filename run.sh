@@ -23,7 +23,7 @@ module load mpich
 module load gcc
 module load qt
 module load cmake
-module load gnuplot
+module unload gnuplot
 
 cmake CMakeLists.txt
 make
@@ -40,6 +40,11 @@ cd ..
 mpirun -n $threads ./main
 #./main
 
+cd output/1Doutput
+gnuplot> load '1dplotall.p'
+cd ../2Doutput
+gnuplot> load '2dplotall.p'
+cd ../..
 
 # end time
 T_END=$(date +%s)

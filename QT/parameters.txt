@@ -1,2 +1,2 @@
-2 Crank-Nicolson 0.1 0.5 1 file_out1
+2 Backward-Euler 0.1 0.4 1 file_out 
 
