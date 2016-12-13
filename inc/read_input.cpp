@@ -5,6 +5,7 @@
 #include <cmath>
 #include <stdlib.h>     /* atoi */
 #include <mpi.h>
+#include <stdexcept>
 
 using namespace std;
 const double PI = 3.141592653589793238463;
@@ -24,6 +25,7 @@ void read_input(int argc, char* argv[],string input_filename, string& filename, 
 
 		int N_space;
 		int i = 0;
+		int flag=0;
 
 		///////////////////// read in parameter.txt file
 		string filename_full;
@@ -68,6 +70,34 @@ void read_input(int argc, char* argv[],string input_filename, string& filename, 
 	else if (num_scheme1 == "Finite-Element") {
 		num_scheme = "FE";
 	}
+	else{
+    cerr<<"undefined solver!"<<endl;
+		flag=1;
+	}
+
+  if(dim!=1 && dim!=2 && dim!=3){
+		cerr<<"wrong dimension defination!"<<endl;
+		flag=1;
+	}
+
+	if(h<0){
+		cerr<<"wrong space step specification!"<<endl;
+		flag=1;
+	}
+	if(k<0){
+		cerr<< "wrong time step specification!"<<endl;
+		flag=1;
+	}
+
+	if(flag==1){
+		throw runtime_error("input parameter error!");
+	}
+
+	if(k>T){
+		cerr<<"wrong total time specification!"<<endl;
+		throw ;
+	}
+
 
   if(rank ==0){
 		cout <<"the input parameters are: "<< '\n'<<"dimension of the problem: "<<dim << '\n' << "numerical scheme: "<<num_scheme << '\n' <<"time step size: "<< k << '\n'<<"space step size: " << h << '\n'<<"total time: " << T << '\n'<<"output file name: " << output_filename << endl;
