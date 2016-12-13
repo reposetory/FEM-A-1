@@ -1,5 +1,0 @@
-submit the job in CCV using  "sbatch run.sh" with x11 or VNC.
-
-In case cmake doesn't work in VNC. compile the codes first in login nodes with "cmake CMakeLists.txt"
-
-There is already a set of default input parameters in QT interface.
