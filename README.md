@@ -1,5 +1,6 @@
 # ENGN 2912B Final Project
 class project FEM-A
+
 team members: Zhi Li Helena Liu YunXing Su
 
 ##Overview:
@@ -22,7 +23,7 @@ In case the bash script doesn't work in VNC, the build steps are :
 
 1. Go to the main directory, `FEM-A` (if the name is not modified) and load requisite modules
 
-    `module load gcc cmake mpich qt'
+    `module load gcc cmake mpich qt`
     
     `module unload gnuplot`
     
