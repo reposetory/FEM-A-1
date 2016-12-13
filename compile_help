@@ -1,3 +1,0 @@
-submit the job in CCV using  "sbatch run.sh" with x11 or VNC should work.
-
-There is already a set of default input parameters in QT interface.
