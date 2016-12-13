@@ -53,7 +53,15 @@ In case the bash script doesn't work in VNC, the build steps are :
     
 7. QT will open, and you may select the options on its interface. It is not recommended to run QT on the login node of CCV, but for it should work for most cases.
 
-8. Output files (raw data and animated videos) will be available in `FEM-A/output/` which can be viewed as described in the regular build instructions.
+8. Go to `FEM-A/output/1Doutput` or `FEM-A/output/2Doutput` according to the dimension you specified in QT. Generate the `.gif` files by typing 
+
+`gnuplot> load '1dscript.p`
+
+OR
+
+`gnuplot> load '2dscript.p`
+
+Output files (raw data and animated videos) will then be available in that directory, which can be viewed as described in the regular build instructions.
  
 
 ## Compatibility Details
