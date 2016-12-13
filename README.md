@@ -55,3 +55,19 @@ In case the bash script doesn't work in VNC, the build steps are :
 
 8. Output files (raw data and animated videos) will be available in `FEM-A/output/` which can be viewed as described in the regular build instructions.
  
+
+## Compatibility Details
+
+This code is verified to work with the following versions of the requisite software/libraries:
+
+1. `cmake/3.6.0`
+
+2. `qt/4.8.3`
+
+3. `mpich/3.1.1`
+
+4. `gcc/4.7.2`
+
+5. `gnuplot/4.6.1`
+
+
